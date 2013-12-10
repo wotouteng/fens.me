@@ -69,7 +69,103 @@ http://blog.cloudera.com/blog/2013/01/apache-hadoop-in-2013-the-state-of-the-pla
 
 + [Apache Ambari:](http://incubator.apache.org/ambari/) 是一种基于Web的工具，支持Hadoop集群的供应、管理和监控。
 
-+ 
++ [Apache Chukwa:](http://incubator.apache.org/chukwa/)是一个开源的用于监控大型分布式系统的数据收集系统，它可以将各种各样类型的数据收集成适合 Hadoop 处理的文件保存在 HDFS 中供 Hadoop 进行各种 MapReduce 操作。
+
++ [Apache Hama:](http://hama.apache.org/) 是一个基于HDFS的BSP（Bulk Synchronous Parallel)并行计算框架, Hama可用于包括图、矩阵和网络算法在内的大规模、大数据计算。
+
++ [Apache Flume:](http://flume.apache.org/)是一个分布的、可靠的、高可用的海量日志聚合的系统，可用于日志数据收集，日志数据处理，日志数据传输。
+
++ [Apache Giraph:](http://giraph.apache.org/) 是一个可伸缩的分布式迭代图处理系统， 基于Hadoop平台，灵感来自 BSP (bulk synchronous parallel) 和 Google 的 Pregel。
+
++ [Apache Oozie:](http://oozie.apache.org/)是一个工作流引擎服务器,用于管理和协调运行在Hadoop平台上（HDFS、Pig和MapReduce）的任务。
+
++ [Apache Crunch:](http://incubator.apache.org/crunch/)是基于Google的FlumeJava库编写的Java库，用于创建MapReduce程序。与Hive，Pig类似，Crunch提供了用于实现如连接数据、执行聚合和排序记录等常见任务的模式库
+
++ [pache Whirr:](http://whirr.apache.org/) 是一套运行于云服务的类库（包括Hadoop），可提供高度的互补性。Whirr学支持Amazon EC2和Rackspace的服务。
+
++ [Apache Bigtop:](http://bigtop.apache.org/) 是一个对Hadoop及其周边生态进行打包，分发和测试的工具。
+
++ [Apache HCatalog:](http://incubator.apache.org/hcatalog/)是基于Hadoop的数据表和存储管理，实现中央的元数据和模式管理，跨越Hadoop和RDBMS，利用Pig和Hive提供关系视图。
+
++ [Cloudera Hue:](http://cloudera.github.io/hue/) 是一个基于WEB的监控和管理系统，实现对HDFS，MapReduce/YARN, HBase, Hive, Pig的web化操作和管理。
+
+
+#2. Hadoop家族学习路线图
+
+下面我将分别介绍各个产品的安装和使用，以我经验总结我的学习路线。
+
+**Hadoop**
+
++ [Hadoop学习路线图](http://blog.fens.me/hadoop-core-roadmap/)
++ Yarn学习路线图
++ [用Maven构建Hadoop项目](http://blog.fens.me/hadoop-maven-eclipse/)
++ [Hadoop历史版本安装](http://blog.fens.me/hadoop-history-source-install/)
++ [Hadoop编程调用HDFS](http://blog.fens.me/hadoop-hdfs-api/)
++ [海量Web日志分析 用Hadoop提取KPI统计指标](http://blog.fens.me/hadoop-mapreduce-log-kpi/)
++ [用Hadoop构建电影推荐系统](http://blog.fens.me/hadoop-mapreduce-recommand/)
++ [创建Hadoop母体虚拟机](http://blog.fens.me/hadoop-base-kvm/)
++ [克隆虚拟机增加Hadoop节点](http://blog.fens.me/hadoop-clone-node/)
++ [R语言为Hadoop注入统计血脉](http://blog.fens.me/r-hadoop-intro/)
++ [RHadoop实践系列之一 Hadoop环境搭建](http://blog.fens.me/rhadoop-hadoop/)
+
+**Hive**
+
++ [Hive学习路线图](http://blog.fens.me/hadoop-hive-roadmap/)
++ [Hive安装及使用攻略](http://blog.fens.me/hadoop-hive-intro/)
++ [Hive导入10G数据的测试](http://blog.fens.me/hadoop-hive-10g/)
++ [R利剑NoSQL系列文章 之 Hive](http://blog.fens.me/nosql-r-hive/)
++ [用RHive从历史数据中提取逆回购信息](http://blog.fens.me/finance-rhive-repurchase/)
+
+**Pig**
+
++ [Pig学习路线图](http://blog.fens.me/hadoop-pig-roadmap/)
+
+**Zookeeper**
+
++ [Zookeeper学习路线图](http://blog.fens.me/hadoop-zookeeper-roadmap/)
++ [ZooKeeper伪分步式集群安装及使用](http://blog.fens.me/hadoop-zookeeper-intro/)
++ [ZooKeeper实现分布式队列Queue](http://blog.fens.me/zookeeper-queue/)
++ [ZooKeeper实现分布式FIFO队列](http://blog.fens.me/zookeeper-queue-fifo/)
+
+**HBase**
+
++ [HBase学习路线图](http://blog.fens.me/hadoop-hbase-roadmap/)
++ [RHadoop实践系列之四  rhbase安装与使用](http://blog.fens.me/rhadoop-hbase-rhase/)
+
+**Mahout**
+
++ [Mahout学习路线图](http://blog.fens.me/hadoop-mahout-roadmap/)
++ [用R解析Mahout用户推荐协同过滤算法(UserCF)](http://blog.fens.me/r-mahout-usercf/)
++ [RHadoop实践系列之三 R实现MapReduce的协同过滤算法](http://blog.fens.me/rhadoop-mapreduce-rmr/)
++ [用Maven构建Mahout项目](http://blog.fens.me/hadoop-mahout-maven-eclipse/)
++ [Mahout推荐算法API详解](http://blog.fens.me/mahout-recommendation-api/)
++ [从源代码剖析Mahout推荐引擎](http://blog.fens.me/mahout-recommend-engine/)
++ [Mahout分步式程序开发 基于物品的协同过滤ItemCF](http://blog.fens.me/hadoop-mahout-mapreduce-itemcf/)
++ [Mahout分步式程序开发 聚类Kmeans](http://blog.fens.me/hadoop-mahout-kmeans/)
++ [用Mahout构建职位推荐引擎](http://blog.fens.me/hadoop-mahout-recommend-job/)
+
+**Sqoop**
+
++ [Sqoop学习路线图](http://blog.fens.me/hadoop-sqoop-roadmap/)
+
+**Cassandra**
+
++ [Cassandra学习路线图](http://blog.fens.me/hadoop-cassandra-roadmap/)
++ [Cassandra单集群实验2个节点](http://blog.fens.me/cassandra-clustor/)
++ [R利剑NoSQL系列文章 之 Cassandra](http://blog.fens.me/nosql-r-cassandra/)
+
+
+**跟上创新的脚步，不断坚持：(TODO列表，不定期更新)**
+
+Avro, Ambari, Chukwa, Hama, Flume, Giraph, Oozie, Crunch, Whirr, Bigtop, HCatalog, Hue
+
+欢迎大家留言，提出宝贵建议！
+
+
+**转载请注明出处：**
+http://blog.fens.me/hadoop-family-roadmap/
+
+
 
 
 
