@@ -100,7 +100,7 @@ Hive的知识点，我已经列在图中，希望帮助其他人更好的了解H
 + [用RHive从历史数据中提取逆回购信息](http://blog.fens.me/finance-rhive-repurchase/)
 
 **相关文章：**
-Hadoop家族产品学习路线图
+[Hadoop家族产品学习路线图](http://blog.fens.me/hadoop-family-roadmap/)
 
 **转载请注明出处：**
 http://blog.fens.me/hadoop-hive-roadmap/
