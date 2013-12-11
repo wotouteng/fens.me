@@ -52,17 +52,17 @@ http://www.oracle.com/technetwork/java/javase/downloads/index.html
 1. 操作系统Ubuntu 12.04 x64
 
 ```{bash}
-    ~ uname -a
+~ uname -a
 Linux domU-00-16-3e-00-00-85 3.2.0-23-generic #36-Ubuntu SMP Tue Apr 10 20:39:51 UTC 2012 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
 2. JAVA环境
 
 ```{bash}
-    ~ java -version
-    java version "1.6.0_29"
-    Java(TM) SE Runtime Environment (build 1.6.0_29-b11)
-    Java HotSpot(TM) 64-Bit Server VM (build 20.4-b02, mixed mode)
+~ java -version
+java version "1.6.0_29"
+Java(TM) SE Runtime Environment (build 1.6.0_29-b11)
+Java HotSpot(TM) 64-Bit Server VM (build 20.4-b02, mixed mode)
 ```
 
 
