@@ -7,7 +7,7 @@ Hadoop家族学习路线图
 
 作为IT界的开发人员，我们也要跟上节奏，抓住机遇，跟着Hadoop一起雄起！
 
-**关于作者：**
+#### 关于作者:
 
 + 张丹(Conan), 程序员Java,R,PHP,Javascript
 + weibo：@Conan_Z
@@ -15,13 +15,13 @@ Hadoop家族学习路线图
 + email: bsspirit@gmail.com
 
 
-**转载请注明出处：**
+####转载请注明出处：
 http://blog.fens.me/hadoop-family-roadmap/
 
 ![Hadoop家族学习路线](http://blog.fens.me/wp-content/uploads/2013/09/hadoopFamilyRoadmap.png)
 
 
-**前言**
+#### 前言
 
 使用Hadoop已经有一段时间了，从开始的迷茫，到各种的尝试，到现在组合应用….慢慢地涉及到数据处理的事情，已经离不开hadoop了。Hadoop在大数据领域的成功，更引发了它本身的加速发展。现在Hadoop家族产品，已经达到20个了之多。
 
@@ -29,7 +29,7 @@ http://blog.fens.me/hadoop-family-roadmap/
 
 本文为“Hadoop家族”开篇，[Hadoop家族学习路线图](http://blog.fens.me/hadoop-family-roadmap/)
 
-**目录**
+#### 目录
 
 1.Hadoop家族产品
 
