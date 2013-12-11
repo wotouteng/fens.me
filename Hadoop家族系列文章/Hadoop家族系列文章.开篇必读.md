@@ -16,7 +16,6 @@ Hadoop家族学习路线图
 
 
 **转载请注明出处：**
-
 http://blog.fens.me/hadoop-family-roadmap/
 
 ![Hadoop家族学习路线](http://blog.fens.me/wp-content/uploads/2013/09/hadoopFamilyRoadmap.png)
@@ -43,8 +42,8 @@ http://blog.cloudera.com/blog/2013/01/apache-hadoop-in-2013-the-state-of-the-pla
 
 接下来，我把这20个产品，分成了2类。
 
-- 第一类，是我已经掌握的
-- 第二类，是TODO准备继续学习的
++ 第一类，是我已经掌握的
++ 第二类，是TODO准备继续学习的
 
 ![Hadoop家族](http://blog.fens.me/wp-content/uploads/2013/09/HadoopFamilySmall.png)
 
@@ -53,8 +52,7 @@ http://blog.cloudera.com/blog/2013/01/apache-hadoop-in-2013-the-state-of-the-pla
 + [Apache Hadoop: ](http://hadoop.apache.org/)是Apache开源组织的一个分布式计算开源框架，提供了一个分布式文件系统子项目(HDFS)和支持MapReduce分布式计算的软件架构。
 
 + [Apache Hive: ](http://hive.apache.org/)是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，通过类SQL语句快速实现简单的MapReduce统计，不必开发专门的MapReduce应用，十分适合数据仓库的统计分析。
-
-+ [Apache Pig:] (http://pig.apache.org/)是一个基于Hadoop的大规模数据分析工具，它提供的SQL-LIKE语言叫Pig Latin，该语言的编译器会把类SQL的数据分析请求转换为一系列经过优化处理的MapReduce运算。
++ [Apache Pig:](http://pig.apache.org/)是一个基于Hadoop的大规模数据分析工具，它提供的SQL-LIKE语言叫Pig Latin，该语言的编译器会把类SQL的数据分析请求转换为一系列经过优化处理的MapReduce运算。
 
 + [Apache HBase: ](http://hbase.apache.org/)是一个高可靠性、高性能、面向列、可伸缩的分布式存储系统，利用HBase技术可在廉价PC Server上搭建起大规模结构化存储集群。
 
@@ -91,7 +89,7 @@ http://blog.cloudera.com/blog/2013/01/apache-hadoop-in-2013-the-state-of-the-pla
 + [Cloudera Hue:](http://cloudera.github.io/hue/) 是一个基于WEB的监控和管理系统，实现对HDFS，MapReduce/YARN, HBase, Hive, Pig的web化操作和管理。
 
 
-#2. Hadoop家族学习路线图
+## 2. Hadoop家族学习路线图
 
 下面我将分别介绍各个产品的安装和使用，以我经验总结我的学习路线。
 
