@@ -18,16 +18,18 @@ Hadoop家族系列文章
 #编程实践
 
 + [Hadoop历史版本安装](http://blog.fens.me/hadoop-history-source-install/)
-+ [用Maven构建Hadoop项目]()
++ [用Maven构建Hadoop项目](http://blog.fens.me/hadoop-maven-eclipse/)
++ [Hadoop编程调用HDFS](http://blog.fens.me/hadoop-hdfs-api/)
++ [用Maven构建Mahout项目](http://blog.fens.me/hadoop-mahout-maven-eclipse/)
++ [Mahout推荐算法API详解](http://blog.fens.me/mahout-recommendation-api/)
++ [从源代码剖析Mahout推荐引擎](http://blog.fens.me/mahout-recommend-engine/)
++ [Mahout分步式程序开发 基于物品的协同过滤ItemCF](http://blog.fens.me/hadoop-mahout-mapreduce-itemcf/)
++ [Mahout分步式程序开发 聚类Kmeans](http://blog.fens.me/hadoop-mahout-kmeans/)
 
-Hadoop编程调用HDFS
+#案例分析
 
-用Maven构建Mahout项目
++ [海量Web日志分析 用Hadoop提取KPI统计指标](http://blog.fens.me/hadoop-mapreduce-log-kpi/)
++ [用Hadoop构建电影推荐系统](http://blog.fens.me/hadoop-mapreduce-recommand/)
++ [用Mahout构建职位推荐引擎](http://blog.fens.me/hadoop-mahout-recommend-job/)
 
-Mahout推荐算法API详解
 
-从源代码剖析Mahout推荐引擎
-
-Mahout分步式程序开发 基于物品的协同过滤ItemCF
-
-Mahout分步式程序开发 聚类Kmeans
