@@ -1,5 +1,11 @@
-博客系列文章
-==================
+
+# [粉丝日志](http://blog.fens.me) 
+
+> 跨界的IT博客|Hadoop家族, R, RHadoop, Nodejs, AngularJS, KVM, NoSQL, IT金融
+
+> http://blog.fens.me
+
+# 博客系列文章列表
 
 ##Hadoop, 大数据, 虚拟化, 操作系统
 
