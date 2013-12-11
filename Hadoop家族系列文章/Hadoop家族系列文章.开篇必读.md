@@ -7,7 +7,7 @@ Hadoop家族学习路线图
 
 作为IT界的开发人员，我们也要跟上节奏，抓住机遇，跟着Hadoop一起雄起！
 
-**关于作者：**
+#### 关于作者：
 
 + 张丹(Conan), 程序员Java,R,PHP,Javascript
 + weibo：@Conan_Z
@@ -16,6 +16,7 @@ Hadoop家族学习路线图
 
 
 **转载请注明出处：**
+
 http://blog.fens.me/hadoop-family-roadmap/
 
 ![Hadoop家族学习路线](http://blog.fens.me/wp-content/uploads/2013/09/hadoopFamilyRoadmap.png)
