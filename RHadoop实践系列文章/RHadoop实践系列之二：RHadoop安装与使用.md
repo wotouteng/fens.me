@@ -18,22 +18,21 @@ RHadoop实践系列文章，包含了R语言与Hadoop结合进行海量数据分
 
 RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”RHadoop安装与使用”，”R实现MapReduce的算法案 例”，”HBase和rhbase的安装与使用”。对于单独的R语言爱好者，Java爱好者，或者Hadoop爱好者来说，同时具备三种语言知识并不容 易。此文虽为入门文章，但R,Java,Hadoop基础知识还是需要大家提前掌握。
 
-#第二篇 RHadoop安装与使用部分，分为3个章节。
+## 第二篇 RHadoop安装与使用部分，分为3个章节。
 
-```{bash}
 1. 环境准备
 2. RHadoop安装
 3. RHadoop程序用例
-```
 
-每一章节，都会分为”文字说明部分”和”代码部分”，保持文字说明与代码的连贯性。
+
+> 每一章节，都会分为”文字说明部分”和”代码部分”，保持文字说明与代码的连贯性。
 
 注：Hadoop环境搭建的详细记录，请查看 同系列上一篇文章 “RHadoop实践系列文章之Hadoop环境搭建”。
 由于两篇文章并非同一时间所写，hadoop版本及操作系统，分步式环境都略有不同。
 两篇文章相互独立，请大家在理解的基础上动手实验，不要完成依赖两篇文章中的运行命令。
 
 
-##环境准备
+## 环境准备
 
 文字说明部分：
 
@@ -165,10 +164,10 @@ install.packages("functional")
 ```{bash}
 ~ vi /etc/environment
 
-    HADOOP_CMD=/root/hadoop/hadoop-1.0.3/bin/hadoop
-    HADOOP_STREAMING=/root/hadoop/hadoop-1.0.3/contrib/streaming/hadoop-streaming-1.0.3.jar
+HADOOP_CMD=/root/hadoop/hadoop-1.0.3/bin/hadoop
+HADOOP_STREAMING=/root/hadoop/hadoop-1.0.3/contrib/streaming/hadoop-streaming-1.0.3.jar
 
-. /etc/environment
+~ . /etc/environment
 ```
 
 ##5. 安装rmr库
@@ -206,14 +205,14 @@ R语言函数：hdfs.cat(”/user/hdfs/o_same_school/part-m-00000″)
 
 普通的R语言程序：
 
-```{bash}
+```{r}
 > small.ints = 1:10
 > sapply(small.ints, function(x) x^2)
 ```
 
 MapReduce的R语言程序：
 
-```{bash}
+```{r}
 > small.ints = to.dfs(1:10)
 > mapreduce(input = small.ints, map = function(k, v) cbind(v, v^2))
 > from.dfs("/tmp/RtmpWnzxl4/file5deb791fcbd5")
@@ -223,7 +222,7 @@ MapReduce的R语言程序：
 
 第二个，rmr的例子是wordcount，对文件中的单词计数
 
-```{bash}
+```{r}
 > input<- '/user/hdfs/o_same_school/part-m-00000'
 > wordcount = function(input, output = NULL, pattern = " "){
 
@@ -249,8 +248,8 @@ MapReduce的R语言程序：
 
 ##1. rhdfs包的使用
 
-```{bash}
-启动R程序
+```{r}
+#启动R程序
 > library(rhdfs)
 
 Loading required package: rJava
@@ -274,7 +273,7 @@ drwxr-xr-x   - root supergroup          0 2013-03-06 17:21 /user/root
 
 ##1.2 rhdfs查看hadoop目录
 
-```{bash}
+```{r}
 > hdfs.ls("/user/")
 
   permission owner      group size          modtime        file
@@ -317,7 +316,7 @@ drwxr-xr-x   - root supergroup          0 2013-03-06 17:21 /user/root
 
 ##1.4 rhdfs查看hadoop数据文件
 
-```{bash}
+```{r}
 >  hdfs.cat("/user/hdfs/o_same_school/part-m-00000")
 
  [1] "10,3,tsinghua university,2004-05-26 15:21:00.0"
@@ -348,8 +347,8 @@ drwxr-xr-x   - root supergroup          0 2013-03-06 17:21 /user/root
 
 ##2. rmr2包的使用
 
-```{bash}
-启动R程序
+```{r}
+#启动R程序
 > library(rmr2)
 
 Loading required package: Rcpp
@@ -363,7 +362,7 @@ Loading required package: reshape2
 
 ##2.1 执行r任务
 
-```{bash}
+```{r}
 > small.ints = 1:10
 > sapply(small.ints, function(x) x^2)
 
@@ -372,7 +371,7 @@ Loading required package: reshape2
 
 ##2.2 执行rmr2任务
 
-```{bash}
+```{r}
 > small.ints = to.dfs(1:10)
 
 13/03/07 12:12:55 INFO util.NativeCodeLoader: Loaded the native-hadoop library
@@ -415,7 +414,7 @@ $val
 
 ##2.3 wordcount执行rmr2任务
 
-```{bash}
+```{r}
 > input<- '/user/hdfs/o_same_school/part-m-00000'
 > wordcount = function(input, output = NULL, pattern = " "){
 
