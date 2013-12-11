@@ -7,7 +7,7 @@ Hadoop家族学习路线图
 
 作为IT界的开发人员，我们也要跟上节奏，抓住机遇，跟着Hadoop一起雄起！
 
-#### 关于作者：
+**关于作者：**
 
 + 张丹(Conan), 程序员Java,R,PHP,Javascript
 + weibo：@Conan_Z
@@ -36,7 +36,7 @@ http://blog.fens.me/hadoop-family-roadmap/
 
 2.Hadoop家族学习路线图
 
-#1. Hadoop家族产品
+## 1. Hadoop家族产品
 
 截止到2013年，根据cloudera的统计，Hadoop家族产品已经达到20个！
 http://blog.cloudera.com/blog/2013/01/apache-hadoop-in-2013-the-state-of-the-platform/
