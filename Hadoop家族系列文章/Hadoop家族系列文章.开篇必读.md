@@ -14,12 +14,10 @@ Hadoop家族学习路线图
 + blog: [http://blog.fens.me](http://blog.fens.me/)
 + email: bsspirit@gmail.com
 
-
-####转载请注明出处：
+#### 转载请注明出处：
 http://blog.fens.me/hadoop-family-roadmap/
 
 ![Hadoop家族学习路线](http://blog.fens.me/wp-content/uploads/2013/09/hadoopFamilyRoadmap.png)
-
 
 #### 前言
 
@@ -161,7 +159,7 @@ Avro, Ambari, Chukwa, Hama, Flume, Giraph, Oozie, Crunch, Whirr, Bigtop, HCatalo
 欢迎大家留言，提出宝贵建议！
 
 
-**转载请注明出处：**
+#### 转载请注明出处:
 http://blog.fens.me/hadoop-family-roadmap/
 
 
