@@ -573,40 +573,237 @@ public class Outer {
 }
 ```
 
-内部类就像一个实例成员一样存在于外部类中。
-内部类可以访问外部类的所有成员就想访问自己的成员一样没有限制。
-内部类中的this指的是内部类的实例对象本身，如果要用外部类的实例对象就可以用类名.this的方式获得。
-内部类对象中不能有静态成员，原因很简单，内部类的实例对象是外部类实例对象的一个成员。
++ 内部类就像一个实例成员一样存在于外部类中。
++ 内部类可以访问外部类的所有成员就想访问自己的成员一样没有限制。
++ 内部类中的this指的是内部类的实例对象本身，如果要用外部类的实例对象就可以用类名.this的方式获得。
++ 内部类对象中不能有静态成员，原因很简单，内部类的实例对象是外部类实例对象的一个成员。
 
 内部类的创建方法：
 
-在外部类的内部，可以用 Inner inner = new Inner(); 方法直接创建
-在外部类外部，必须先创建外部类实例，然后再创建内部类实例。
-Outer outer = new Outer();
-Inner inner = outer.new Inner();
++ 在外部类的内部，可以用 Inner inner = new Inner(); 方法直接创建
++ 在外部类外部，必须先创建外部类实例，然后再创建内部类实例。
++ Outer outer = new Outer();
++ Inner inner = outer.new Inner();
 
+####静态内部类
+和普通的类一样，内部类也可以有静态的。不过和非静态内部类相比，区别就在于静态内部类没有了指向外部的引用。除此之外，在任何非静态内部类中，都不能有静态数据，静态方法或者又一个静态内部类（内部类的嵌套可以不止一层）。不过静态内部类中却可以拥有这一切。这也算是两者的第二个区别吧。
 
+```{bash}
+public class Outer {   
+    public static class Inner{
+    }
+}
+```
 
+####局部内部类
+们也可以把类定义在方法内部，这时候我们称这个类叫局部内部类。
 
+局部内部类的地位和方法内的局部变量的位置类似，因此不能修饰局部变量的修饰符也不能修饰局部内部类，譬如public、private、protected、static、transient等  
+局部内部类只能在声明的方法内是可见的，因此定义局部内部类之后，想用的话就要在方法内直接实例化，记住这里顺序不能反了，一定是要先声明后使用，否则编译器会说找不到。  
+局部内部类不能访问定义它的方法内的局部变量，除非这个变量被定义为final 。
 
+```{bash}
+interface World {
+    String sayHello();
+}
+public class Outer {
+    public class Inner {
+        public World hello() {
+            class World2 implements World {
+                private String name;
+                @Override
+                public String sayHello() {
+                    return "hello " + name;
+                }
+            }
+            return new World2();
+        }
+    }
+}
+```
 
+####匿名内部类
+当我们把内部类的定义和声明写到一起时，就不用给这个类起个类名而是直接使用了，这种形式的内部类根本就没有类名，因此我们叫它匿名内部类。  
+匿名内部类可以是某个类的继承子类也可以是某个接口的实现类。
 
+```{bash}
+interface World {
+    String sayHello();
+}
+public class Outer {
+    public class Inner {
+        public World hello() {
+            return new World() {
+                private String name;
+                @Override
+                public String sayHello() {
+                    return "hello " + name;
+                }
+            };
+        }
+    }
+}
+```
 
+###19). 数组
+数组是有序数据的集合，数组中的每个元素具有相同的数组名和下标来唯一地确定数组中的元素。
 
+####一维数据
 
+```{bash}
+int[] number1;
+int number2[];
+Java中使用关键字new创建数组对象，格式为：
+int[] number1 = new int[5];
+```
 
+####多维数据
 
+```{bash}
+String[][] s1; //二维数组
+String[][][][] s2; //四维数组
+String[] s3[]; //怪异写法的二维数组
+```
 
+####构建数组 | 创建数组 | 实例化数组
+构建数组意味着在堆上创建数组对象（所有的对象都存储在堆上，堆是一种内存存储结构，既然要存储就设计空间分配问题，因此此时需要指定数组的大小）。而此时虽然有了数组对象，但数组对象里还没有值。
 
++ int[] scores; //声明数组  
++ scores = new int[34]; //创建数组  
++ int[] i = new int[22]; //声明并创建数组  
++ 声明数组时如果没写长度，只是定义了一个变量，只没有分配空间。
 
++ int[][] xy= new int[2][3]; //声明并创建二维数组  
++ int[][] mn= new int[2][]; //声明并创建二维数组,只创建第一级数组也是可以的。
 
+####初始化数组 | 给数组赋值
+初始化数组就是把内容放在数组中。数组中的内容就是数组的元素。他们可以是基本数据类型也可以是引用数据类型。如同引用类型的变量中保存的是指向对象的引用而不是对象本身一样。数组中保存的也是对象的引用而不是对象本身。
 
++ Pig[] pigs = new Pig[3]; //声明并创建猪数组
++ pigs[0] = new Pig(); //给每一个元素赋值，创建了三个猪对象，此时数组里才真正有了对象
++ pigs[1] = new Pig(); //数组用下标来赋值和访问，下标写在[]中，数组下标最大是声明数量减1
++ pigs[2] = new Pig();
 
++ int[] numbers;
++ numbers=new int[]{0,1,2,3,4,5,6,7,8,9}; //创建匿名数组并赋值
++ int[][] xy= new int[][]{{2,3},{4,5},{5,6}}; //创建二维匿名数组并赋值
 
+###20). 异常
+####异常及异常的分类
+异常是指在程序中出现的异常状况，在Java中异常被抽象成一个叫做Throwable的类。
 
+其中如果程序出错并不是由程序本身引起的，而是硬件等其他原因引起的，我们称之为Error，一般情况下Error一旦产生，对程序来说都是致命的错误，程序本身无能为力，所以我们可以不对Error作出任何处理和响应。
 
+异常如果是由程序引起的我们称之为Exception，Exception又分两种，我们把运行时才会出现的异常叫做 RuntimeException，RuntimeException我们不好在程序编写阶段加以事先处理，而其他异常则可以在程序编写和编译阶段加以事先检查和处理，我们把这种异常叫做检验异常。
 
+####程序只需要捕捉和处理检验异常
+相应的我们把除检验异常(可检查异常)之外的异常称之为非检验异常，包括Error和RuntimeException ，非检验异常可以捕捉也可以不捕捉，更多的时候我们不捕捉，因为捕捉了我们也没办法处理，譬如程序运行时发生了一个VirtualMachineError异常，虚拟机都出错了，作为运行在虚拟机内的程序又有什么办法处理呢？
 
+![](http://blog.fens.me/wp-content/uploads/2013/07/exception.jpg)
+
+####异常的处理
+try{}catch(){}finally{}
+
+####异常处理的几条规则
++ try用于定义可能发生异常的代码段，这个代码块被称为监视区域，所有可能出现检验异常的代码写在这里。
++ catch代码段紧跟在try代码段后面，中间不能有任何其他代码。
++ try后面可以没catch代码段，这实际上是放弃了捕捉异常，把异常捕捉的任务交给调用栈的上一层代码。
++ try后面可以有一个或者多个catch代码段，如果有多个catch代码段那么程序只会进入其中某一个catch。
++ catch捕捉的多个异常之间有继承关系的话，要先捕捉子类后捕捉父类。
++ finally代码段可以要也可以不要。
++ 如果try代码段没有产生异常，那么finally代码段会被立即执行，如果产生了异常，那么finally代码段会在catch代码段执行完成后立即执行。
++ 可以只有try和finally没有catch。
+
+##5. JDK基本包介绍
+
+JDK（Java Development Kit）是Sun Microsystems针对Java开发员的产品。自从Java推出以来，JDK已经成为使用最广泛的Java SDK。JDK 是整个Java的核心，包括了Java运行环境、Java工具和Java基础类库。JDK是学好Java的第一步。
+
+###1). 基础包
+
++ java.lang： 这个是系统的基础类，比如String等都是这里面的，这个包是唯一一个可以不用引入(import)就可以使用的包
++ java.io: 这里面是所有输入输出有关的类，比如文件操作等
++ java.nio;为了完善io包中的功能，提高io包中性能而写的一个新包 ，例如NIO非堵塞应用
++ java.net: 这里面是与网络有关的类，比如URL，URLConnection等。
++ java.util: 这个是系统辅助类，特别是集合类Collection，List，Map等。
++ java.sql: 这个是数据库操作的类，Connection， Statement，ResultSet等
++ javax.servlet: 这个是JSP，Servlet等使用到的类
+
+###2). 字符串(java.lang.String)
+程序开发的工作中80%的操作都和字符串有关。
+
+```{bash}
+public final class String implements java.io.Serializable, Comparable, CharSequence{}
+```
+
+String永远不可能有子类，它的实例也是无法改变的。
+
+####创建字符串对象
+
+```{bash}
+String s1 = new String("Milestone");
+String s2 = "String";
+```
+
+第一种是常规写法，创建一个对象当然就可以用new跟上个构造函数完成。第二种写法，最常用，效率也高。  
+字符串操作中的加号
+
+我们经常要把两个或者更多的字符串拼接成一个字符串，除了普通的连接字符串的方法以外，Java语言专门为String提供了一个字符串连接符号“+”
+
+```{String s3 = "a"+"b";}
+```
+
+####字符串中的常用方法
+
++ charAt() 返回位于指定索引处的字符串
++ concat() 将一个字符串追加到另一个字符串的末尾
++ equalseIgnoseCase() 判断两个字符串的相等性，忽略大小写
++ length() 返回字符串中的字符个数
++ replace() 用新字符代替指定的字符
++ substring() 返回字符串的一部分
++ toLowerCase() 将字符串中的大写字符转换成小写字符返回
++ toString() 返回字符串的值
++ toUpperCase() 将字符串中的小写字符转换成大写字符返回
++ trim() 删除字符串前后的空格
++ splite() 将字符串按照指定的规则拆分成字符串数组
+
+###3). 集合(java.util.Collection)
+colection 集合，用来表示任何一种数据结构 Collection 集合接口，指的是 java.util.Collection接口，是 Set、List 和 Queue 接口的超类接口 Collections 集合工具类，指的是 java.util.Collections 类。
+
+####集合类和集合接口
+
+```{bash}
+Collection , Set , SortedSet , List , Map , SortedMap , Queue , NavigableSet , NavigableMap, Iterator, HashMap , Hashtable ,TreeMap , LinkedHashMap , HashSet , LinkedHashSet ,TreeSet , ArrayList , Vector , LinkedList , PriorityQueuee , Collections , Arrays
+```
+
++ List 关注事物的索引列表
++ Set 关注事物的唯一性
++ Queue 关注事物被处理时的顺序
++ Map 关注事物的映射和键值的唯一性
+
+![](http://blog.fens.me/wp-content/uploads/2013/07/collection.jpg)
+
+上图中加粗线的ArrayList 和 HashMap 是我们重点讲解的对象。下面这张图看起来层级结构更清晰些。
+
+![](http://blog.fens.me/wp-content/uploads/2013/07/collection2.jpg)
+
+####Collection 接口
+Collection接口是 Set 、List 和 Queue 接口的父接口，提供了多数集合常用的方法声明，包括 add()、remove()、contains() 、size() 、iterator() 等。
+
++ add(E e) 将指定对象添加到集合中
++ remove(Object o) 将指定的对象从集合中移除，移除成功返回true,不成功返回false
++ contains(Object o) 查看该集合中是否包含指定的对象，包含返回true,不包含返回flase
++ size() 返回集合中存放的对象的个数。返回值为int
++ clear() 移除该集合中的所有对象，清空该集合。
++ iterator() 返回一个包含所有对象的iterator对象，用来循环遍历
++ toArray() 返回一个包含所有对象的数组,类型是Object
++ toArray(T[] t) 返回一个包含所有对象的指定类型的数组
+
+List接口
+
++ List 关心的是索引，与其他集合相比，List特有的就是和索引相关的一些方法：get(int index) 、 add(int index,Object o) 、 indexOf(Object o) 。
++ ArrayList 可以将它理解成一个可增长的数组，它提供快速迭代和快速随机访问的能力。
++ LinkedList 中的元素之间是双链接的，当需要快速插入和删除时LinkedList成为List中的不二选择。
++ Vector 是ArrayList的线程安全版本，性能比ArrayList要低，现在已经很少使用
 
 
 
