@@ -1,15 +1,73 @@
 RHadoop实践系列之三 R实现MapReduce的协同过滤算法
 ==================
 
->Author：张丹(Conan)
->Date: 2013-04-07
+> Author：张丹(Conan)  
+  Date: 2013-04-07  
+  Weibo: @Conan_Z  
+  Email: bsspirit@gmail.com  
+  Blog: http://www.fens.me/blog
 
->Weibo: @Conan_Z
->Email: bsspirit@gmail.com
->Blog: http://www.fens.me/blog
+> APPs:  
+  @晒粉丝 http://www.fens.me  
+  @每日中国天气 http://apps.weibo.com/chinaweatherapp
 
->APPs:
->+ @晒粉丝 http://www.fens.me
->+ @每日中国天气 http://apps.weibo.com/chinaweatherapp
+##RHadoop实践系列文章
 
-RHadoop实践系列文章
+RHadoop实践系列文章，包含了R语言与Hadoop结合进行海量数据分析。Hadoop主要用来存储海量数据，R语言完成MapReduce 算法，用来替代Java的MapReduce实现。有了RHadoop可以让广大的R语言爱好者，有更强大的工具处理大数据。1G, 10G, 100G, TB,PB 由于大数据所带来的单机性能问题，可能会一去联复返了。
+
+RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”RHadoop安装与使用”，”R实现MapReduce的算法案 例”，”HBase和rhbase的安装与使用”。对于单独的R语言爱好者，Java爱好者，或者Hadoop爱好者来说，同时具备三种语言知识并不容 易。
+
+由于rmr2的对hadoop操作有一些特殊性，代码实现有一定难度。需要深入学习的同学，请多尝试并思考key/value值的设计。
+
+本文难度为中高级。
+
+##第三篇 R实现MapReduce的协同过滤算法，分为3个章节。
+
+```{bash}
+1.基于物品推荐的协同过滤算法介绍
+2.R本地程序实现
+3.R基于Hadoop分步式程序实现
+```
+
+每一章节，都会分为”文字说明部分”和”代码部分”，保持文字说明与代码的连贯性。
+
+注：Hadoop环境及RHadoop的环境，请查看同系列前二篇文章，此文将不再介绍。
+
+###1. 基于物品推荐的协同过滤算法介绍
+
+文字说明部分：
+
+越来越多的互联网应用，都开始使用推荐算法(协同过滤算法)。根据用户活跃度和物品流行度，可以分为”基于用户的协同过滤算法”和”基于物品的协同过滤算法”。
+
+基于用户的协同过滤算法，是给用户推荐和他兴趣相似的其他用户喜欢的物品。
+基于物品的协同过滤算法，是给用户推荐和他之前喜欢的物品相似的物品。
+基于物品的协同过滤算法，是目前广泛使用的一种推荐算法，像Netflix, YouTube, Amazon等。
+
+算法主要分为两步：
+1. 计算物品之间的相似度
+2. 根据物品的相似度和用户的历史行为给用户生成推荐列表
+
+有关算法的细节请参考：”Mahout In Action”和”推荐系统实践”两本书。
+
+为开发方便，我们选择一组很小的测试数据集。
+
+测试数据，来自于”Mahout In Action” P49
+原第8行，3,101,2.5 改为 3,101,2.0
+每行3个字段，依次是用户ID,物品ID,对物品的评分
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
