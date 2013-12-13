@@ -632,29 +632,200 @@ function (x, y, ...)
 ####在函数中赋值
 注意任何在函数内部的普通赋值都是局部的暂时的，当退出函数时都会丢失。因此函数中的赋值语句X <- qr(X) 不会影响调用该函数的程序赋值情况。
 
-“强赋值"操作符 <<- :如果想在一个函数里面全局赋值或者永久赋值
+"强赋值"操作符 <<- :如果想在一个函数里面全局赋值或者永久赋值
+
+```{bash}
+fscope<-function(){
+  a<-1
+  b<<-2
+  c=3
+}
+```
+
+####作用域
+函数内部的变量可以分为三类：形式参数(formal parameters)，局部变量(local variables),自由变量(free variables)。
+
++ 形式参数是出现在函数的参数列表中的变量。它们的值由实际的函数参数绑定形式参数的过程决定的。
++ 局部变量由函数内部表达式的值决定的。既不是形式参数又不是局部变量的变量是自由变量。
++ 自由变量如果被赋值将会变成局部变量
+
+```{bash}
+
+z<-45
+f <- function(x) {
+  y <- 2*x
+  print(x)
+  print(y)
+  print(z)
+}
+```
+
+x 是形式参数，y 是局部变量，z 是自由变量。
+
+####定制环境
+可以修改位置初始化文件，并且每个目录都可以有它特有的一个初始化文件。利用函数.First 和.Last。位置初始化文件的路径可以通过环境变量R PROFILE 设置。这个文件包括你每次执行R时一些自动运行的命令。
+
+####类，泛型函数和面向对象
+一个对象的类决定了它会如何被一个泛型函数处理。相反，一个泛型函数由参数自身类的种类来决定完成特定工作或者事务的。如果参数缺乏任何类属性，或者在该问题中有一个不能被任何泛型函数处理的类，泛型函数会有一种默认的处理方式。
+
+下面的一个例子使这个问题变得清晰。类机制为用户提供了为特定问题设计和编写泛型函数的便利。在众多泛型函数中，plot() 用于图形化显示对象，summary()用于各种类型的概述分析，以及anova() 用于比较统计模型。 能以特定方式处理类的泛型函数的数目非常庞大。
+
+methods() 得到当前对某个类对象可用的泛型函数列表：
+
+```{bash}
+methods(class="data.frame")
+```
+
+相反，一个泛型函数可以处理的类同样很多。例如，plot() 有默认的方法和变  
+量处理对象类"data.frame"，"density"，"factor"，等等。
+
+一个完整的列表同样可以通过函数methods():
+
+```{bash}
+methods(plot)
+
+###17) R中的统计模型
+线性模型,对于常规的多重模型拟合，最基本的函数是lm()。
+
+```{bash}
+fm2 <- lm(y ~ x1 + x2, data = production)
+```
+
+将会拟合y 对x1 和x2 的多重回归模型和一个隐式的截距项
+
+####提取模型信息的泛型函数
+lm() 的返回值是一个模型拟合结果对象；技术上就是属于类"lm" 的一个结果列表。关于拟合模型的信息可以用适合对象类"lm" 的泛型函数显示，提取，图示等等。
+
+```{bash}
+
+add1 coef effects kappa predict residuals alias 
+deviance family labels print step anova drop1 
+formula plot proj summary
+```
+
++ anova(object1 , object2) 比较一个子模型和外部模型，并且产生方差分析表。
++ coef(object) 提取回归系数(矩阵)。全称：coefficients(object).
++ deviance(object) 残差平方和，若有权重可加权。
++ formula(object) 提取模型公式信息。
++ plot(object) 产生四个图，显式残差，拟合值和一些诊断图。
++ predict(object, newdata=data:frame) 提供的数据框必须有同原始变量一样标签的变量。结果是对应于data:frame中决定变量预测值的向量或矩阵。
++ predict.gam(object,newdata=data:frame) predict.gam() 是安全模式的predict()。它可以用于lm, glm和gam 拟合对象。在正交多项式作为原始的基本函数并且增加新数据意味着必须使用不同的原始基本函数。
++ print(object) 简要打印一个对象的内容
++ residuals(object) 提取残差(矩阵)，有权重时可加权，省略方式：resid(object)。
++ step(object) 通过增加或者减少模型中的项并且保留层次来选择合适的模型。在逐步搜索过程中，AIC (Akaike信息规范)值最大的模型将会被返回。
++ summary(object) 显示较详细的模型拟合结果
+
+###18). 图形工具
+图形工具是R 环境里面一个非常重要和多用途的组成部分。我们可以用这些图形工具显示各种各样的统计图并且创建一些全新的图。
+
+图形工具既可交互式使用，也可以批处理使用。在许多情况下，交互式使用是最有效的。打开R 时，它会启动一个图形设备驱动（device driver）。该驱动会打开特定的图形窗口（graphics window）以显示交互式的图片。尽管这些都是自动实现的，了解用于UNIX 系统的X11() 命令和Windows 系统的windows() 命令是非常有用的。一旦设备驱动启动，R 绘图命令可以用来产生统计图或者设计全新的图形显示。
+
+绘图命令可以分成了三个基本的类：
+
++ 高级绘图命令: 在图形设备上产生一个新的图区，它可能包括坐标轴，标签，标题等等。
++ 低级画图命令: 会在一个已经存在的图上加上更多的图形元素，如额外的点，线和标签。
++ 交互式图形命令: 允许你交互式地用定点设备（如鼠标）在一个已经存在的图上添加图形信息或者提取图形信息。
+
+####高级绘图命令
+plot(),这是一个泛型函数：产生的图形依赖于第一个参数的类型或者类。 pairs(X),描绘多元数据提供了两个非常有用的函数
+
+####低级图形函数
+高级图形函数不能准确产生你想要的图。低级图形命令可以在当前图上精确增加一些额外信息(如点，线或者文字)。 points(x, y) lines(x, y)
+
+####数学标注
+在某些情况下，在一个图上加上数学符号和公式是非常有用的。在R 里面，这可以通过函数expression 实现，
+
+```{bash}
+text(x, y, expression(paste(bgroup("(", atop(n, x), ")"), p^x, q^{n-x})))
+```
+
+####图像设备输出
+
++ X11() 用UNIX 类型的系统的X11 桌面系统
++ windows() 用于Windows 系统
++ quartz() 用于MacOS X 系统
++ postscript() 用于PostScript 打印机，或者创建PostScript 文件。
++ pdf() 创建可以插入PDF 文件中PDF 文件
++ png() 创建PNG 位图文件。(不总是有效的：参考它的帮助文件)
++ jpeg() 创建JPEG 位图文件，非常适用于影
+
+###19). 包(packages)
+所有的R 函数和数据集是保存在包里面的。只有当一个包被载入时，它的内容才可以被访问。这样做一是为了高效，二是为了帮助包的开发者防止命名和其他代码中的名字冲突。
+
+library():查看系统中安装的包 library(plyr):加载plyr包 CRAN.packages() 连接因特网，并且允许自动更新和安装包。 search()为了查看当前有那些包载入了
+
+####标准包
+标准包构成R 原代码的一个重要部分。它们包括允许R 工作的的基本函数，和本文档中描述的数据集，标准统计和图形工具。在任何R 的安装版本中，它们都会被自动获得。
+
+####捐献包和CRAN
+世界各地的作者为R 捐献了好几百个包。其中一些包实现了特定的统计方法，另外一些给予数据和硬件的访问接口，其他则作为教科书的补充材料。 可以从CRAN (http://CRAN.R-project.org/ 和它的镜像)和其他一些资源，如Bioconductor (http://www.bioconductor.org/) 下载得到
+
+####命名空间
+包有命名空间(namespaces),并且现在所有基本的和推荐的的包都依赖于包datasets。
+
+它们允许包的作者隐藏函数和数据，即只允许内部用户使用，它们防止函数在一个用户使用相同名字时被破坏，它们提供了一种访问特定包的某个对象的方法。
+
+有两个操作符和命名空间相关。 双冒号操作符:: 选择一个特定命名空间得到的函数定义。可以通过base::t 使用，因为它是在包base 中定义的。 三冒号操作符::: 可能会出现在一些R 代码中：它有点像双冒号操作符，但可以访问隐藏对象。
+
+包常常是包之间依赖的（inter-dependent），载入其中一个可能会引起其他包的自动载入。
+
+##4. R基本函数
+
+请查看：R参考卡片，[点击下载](http://doc.fens.me/cos/R-refcard.pdf)
+
+##5. R的扩展包
+
+###1). plyr (数据处理)
+plyr是一个数据处理的包，可以把大的数据集通过一些条件拆分成小的数据集的功能包。
+
+数据集baseball(http://www.baseball-databank.org/)  
+21,699 records covering 1,288 players, spanning 1871 to 2007
+
+举例：击球得分：RBI(Run batted in)
+
+```{bash}
+
+install.packages("plyr")
+library(plyr)
+?baseball
+ddply(baseball, .(lg), c("nrow", "ncol"))
+rbi <- ddply(baseball, .(year), summarise, mean_rbi = mean(rbi, na.rm = TRUE))
+plot(mean_rbi ~ year, type = "l", data = rbi)
+```
+
+![](http://blog.fens.me/wp-content/uploads/2013/07/rbi-plyr.png)
+
+###2). stringr (字符串处理)
+stringr是一个字符串处理的包，可以方便地进行各种字符串的操作。
+
+```{bash}
+install.packages("stringr")
+library(stringr)
+
+fruits <- c("one apple", "two pears", "three bananas")
+str_replace(fruits, "[aeiou]", "-")
+str_replace_all(fruits, "[aeiou]", "-")
+
+str_replace_all(fruits, "([aeiou])", "")
+str_replace_all(fruits, "([aeiou])", "\\1\\1")
+str_replace_all(fruits, "[aeiou]", c("1", "2", "3"))
+str_replace_all(fruits, c("a", "e", "i"), "-")
+```
+
+###3). ggplot2 (可视化)
+ggplot2专业级的可视化绘图包
+
+```{bash}
+install.packages("ggplot2")
+library(ggplot2)
+g<-ggplot(mtcars, aes(x=factor(cyl), fill=factor(vs)))
+g+geom_bar(position="dodge")
+```
+
+![](http://blog.fens.me/wp-content/uploads/2013/07/ggplot2.png)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+http://blog.fens.me/rhadoop-r-basic/
 
 
 
