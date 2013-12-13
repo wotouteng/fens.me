@@ -463,7 +463,44 @@ absdet <- function(M) prod(svd(M)$d)
 evals <- eigen(Sm, only.values = TRUE)$values
 ```
 
+####cbind()和rbind()构建分块矩阵
+函数cbind() 和rbind():把向量和矩阵拼成一个新的矩阵。cbind() 把矩阵横向合并成一个大矩阵（列方式），而rbind()是纵向合并（行方式）。  
+对数组实现连接操作的函数c()  
+将一个数组强制转换成简单向量的标准方法是用函数as.vector()。
 
+```{bash}
+vec <- as.vector(X)
+#等价操作
+vec <- c(X)
+```
+
+####因子的频率表
+单个因子会把各部分数据分成不同的组。类似的是，一对因子可以实现交叉分组等。函数table() 可以从等长的不同因子中计算出频率表。如果有k 个因子参数，那么结果将是一个k-维的频率分布数组。
+
+```{bash}
+statefr <- table(statef) 
+statefr <- tapply(statef, statef, length)
+```
+
+###13). 列表(list)
+R的列表是一个以对象的有序集合构成的对象。列表中包含的对象又称为它的分量（components）。分量可以是不同的模式或类型，如一个列表可以同时包括数值向量，逻辑向量，矩阵，复向量，字符数组，函数等等。
+
+```{bash}
+Lst <- list(name="Fred", wife="Mary", no.children=3,child.ages=c(4,7,9))
+```
+
+分量常常会被编号，并且可以利用这种编号来访问分量。如果列表Lst 有四个分量，这些分量则可以用Lst[[1]], Lst[[2]], Lst[[3]] 和Lst[[4]] 独立访问。因为Lst 是一个列表，所以函数length(Lst) 给出的仅仅是分量的数目. 列表的分量可以被命名，这种情况下可以通过名字访问。
+
+####构建和修改列表
+list():将已有的对象构建成列表。  
+Lst[5] <- list(matrix=Mat)
+
+####列表连接
+当连接函数c() 的参数中有列表对象时，结果就是一个列表模式的对象。它的分量是那些当作参数的列表。
+
+```{bash}
+list.ABC <- c(list.A, list.B, list.C)
+```
 
 
 
