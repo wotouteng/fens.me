@@ -1,22 +1,21 @@
 RHadoop实践系列之二：RHadoop安装与使用
 ==============
 
-+ Author：张丹(Conan)
-+ Date: 2013-03-07
-+ Weibo: @Conan_Z
-+ Email: bsspirit@gmail.com
-+ Blog: http://www.fens.me/blog
+[RHadoop实践系列文章](http://blog.fens.me/series-rhadoop/)，包含了R语言与Hadoop结合进行海量数据分析。Hadoop主要用来存储海量数据，R语言完成MapReduce算法，用来替代Java的MapReduce实现。有了RHadoop可以让广大的R语言爱好者，有更强大的工具处理大数据。1G, 10G, 100G, TB,PB 由于大数据所带来的单机性能问题，可能会一去联复返了。
 
-**APPs:**
+RHadoop实践是一套系列文章，主要包括"Hadoop环境搭建"，"RHadoop安装与使用"，"R实现MapReduce的算法案 例"，"HBase和rhbase的安装与使用"。对于单独的R语言爱好者，Java爱好者，或者Hadoop爱好者来说，同时具备三种语言知识并不容 易。
 
-+ @晒粉丝 http://www.fens.me
-+ @每日中国天气 http://apps.weibo.com/chinaweatherapp
+由于rmr2的对hadoop操作有一些特殊性，代码实现有一定难度。需要深入学习的同学，请多尝试并思考key/value值的设计。
 
-#RHadoop实践系列文章
+#### 关于作者：
 
-RHadoop实践系列文章，包含了R语言与Hadoop结合进行海量数据分析。Hadoop主要用来存储海量数据，R语言完成MapReduce 算法，用来替代Java的MapReduce实现。有了RHadoop可以让广大的R语言爱好者，有更强大的工具处理大数据。1G, 10G, 100G, TB,PB 由于大数据所带来的单机性能问题，可能会一去联复返了。
++ Author：张丹(Conan)  
++ Date: 2013-04-07  
++ Weibo: @Conan_Z  
++ Email: bsspirit@gmail.com  
++ Blog: http://blog.fens.me
 
-RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”RHadoop安装与使用”，”R实现MapReduce的算法案 例”，”HBase和rhbase的安装与使用”。对于单独的R语言爱好者，Java爱好者，或者Hadoop爱好者来说，同时具备三种语言知识并不容 易。此文虽为入门文章，但R,Java,Hadoop基础知识还是需要大家提前掌握。
+#### 转载请注明出处：http://blog.fens.me/rhadoop-rhadoop/
 
 ## 第二篇 RHadoop安装与使用部分，分为3个章节。
 
@@ -24,38 +23,38 @@ RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”R
 2. RHadoop安装
 3. RHadoop程序用例
 
+> 每一章节，都会分为"文字说明部分"和"代码部分"，保持文字说明与代码的连贯性。
 
-> 每一章节，都会分为”文字说明部分”和”代码部分”，保持文字说明与代码的连贯性。
+Hadoop环境搭建的详细记录，请查看 同系列上一篇文章 [RHadoop实践系列文章之Hadoop环境搭建](http://blog.fens.me/rhadoop-hadoop/)
 
-注：Hadoop环境搭建的详细记录，请查看 同系列上一篇文章 “RHadoop实践系列文章之Hadoop环境搭建”。
-由于两篇文章并非同一时间所写，hadoop版本及操作系统，分步式环境都略有不同。
+> 注：由于两篇文章并非同一时间所写，hadoop版本及操作系统，分步式环境都略有不同。
 两篇文章相互独立，请大家在理解的基础上动手实验，不要完成依赖两篇文章中的运行命令。
 
 
-## 环境准备
+## 1. 环境准备
 
-文字说明部分：
+#### 文字说明部分：
 
 首先环境准备，这里我选择了Linux Ubuntu操作系统12.04的64位版本，大家可以根据自己的使用习惯选择顺手的Linux。
 
 但JDK一定要用Oracle SUN官方的版本，请从官网下载，操作系统的自带的OpenJDK会有各种不兼容。JDK请选择1.6.x的版本，JDK1.7版本也会有各种的不兼容情况。
 http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
-Hadoop的环境安装，请参考RHadoop实践系统”Hadoop环境搭建”的一文。
+Hadoop的环境安装，请参考RHadoop实践系统"Hadoop环境搭建"的一文。
 
 R语言请安装2.15以后的版本，2.14是不能够支持RHadoop的。
 如果你也使用Linux Ubuntu操作系统12.04，请先更新软件包源，否则只能下载到2.14版本的R。
 
-代码部分：
+#### 代码部分：
 
-##1. 操作系统Ubuntu 12.04 x64
+### 1). 操作系统Ubuntu 12.04 x64
 
 ```{bash}
 ~ uname -a
 Linux domU-00-16-3e-00-00-85 3.2.0-23-generic #36-Ubuntu SMP Tue Apr 10 20:39:51 UTC 2012 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
-##2 JAVA环境
+### 2). JAVA环境
 
 ```{bash}
 ~ java -version
@@ -65,13 +64,13 @@ Java(TM) SE Runtime Environment (build 1.6.0_29-b11)
 Java HotSpot(TM) 64-Bit Server VM (build 20.4-b02, mixed mode)
 ```
 
-##3 HADOOP环境(这里只需要hadoop)
+### 3). HADOOP环境(这里只需要hadoop)
 
 ```{bash}
 hadoop-1.0.3  hbase-0.94.2  hive-0.9.0  pig-0.10.0  sqoop-1.4.2  thrift-0.8.0  zookeeper-3.4.4
 ```
 
-##4 R的环境
+### 4). R的环境
 
 ```{bash}
 R version 2.15.3 (2013-03-01) -- "Security Blanket"
@@ -80,7 +79,7 @@ ISBN 3-900051-07-0
 Platform: x86_64-pc-linux-gnu (64-bit)
 ```
 
-4.1 如果是Ubuntu 12.04，请更新源再下载R2.15.3版本
+#### 如果是Ubuntu 12.04，请更新源再下载R2.15.3版本
 
 ```{bash}
 sh -c "echo deb http://mirror.bjtu.edu.cn/cran/bin/linux/ubuntu precise/ >>/etc/apt/sources.list"
@@ -88,9 +87,9 @@ apt-get update
 apt-get install r-base
 ```
 
-#RHadoop安装
+## 2. RHadoop安装
 
-文字说明部分：
+#### 文字说明部分：
 
 RHadoop是RevolutionAnalytics的工程的项目，开源实现代码在GitHub社区可以找到。RHadoop包含三个R包 (rmr，rhdfs，rhbase)，分别是对应Hadoop系统架构中的，MapReduce, HDFS, HBase 三个部分。由于这三个库不能在CRAN中找到，所以需要自己下载。
 https://github.com/RevolutionAnalytics/RHadoop/wiki
@@ -104,16 +103,16 @@ https://github.com/RevolutionAnalytics/RHadoop/wiki
 
 安装rmr库，使用R CMD INSTALL也可以顺利完成了。
 
-安装rhbase库，后面”HBase和rhbase的安装与使用”文章中会继续介绍，这里暂时跳过。
+安装rhbase库，后面"HBase和rhbase的安装与使用"文章中会继续介绍，这里暂时跳过。
 
 最后，我们可以查看一下，RHADOOP都安装了哪些库。
 由于我的硬盘是外接的，使用mount和软连接(ln -s)挂载了R类库的目录，所以是R的类库在/disk1/system下面
 /disk1/system/usr/local/lib/R/site-library/
 一般R的类库目录是/usr/lib/R/site-library或者/usr/local/lib/R/site-library，用户也可以使用whereis R的命令查询，自己电脑上R类库的安装位置
 
-代码部分：
+#### 代码部分：
 
-##1. 下载RHadoop相关的3个程序包
+### 1). 下载RHadoop相关的3个程序包
 
 https://github.com/RevolutionAnalytics/RHadoop/wiki/Downloads
 
@@ -123,7 +122,7 @@ rhdfs-1.0.5
 rhbase-1.1
 ```
 
-##2. 复制到/root/R目录
+### 2). 复制到/root/R目录
 
 ```{bash}
 ~/R# pwd
@@ -133,14 +132,14 @@ rhbase-1.1
 rhbase_1.1.tar.gz  rhdfs_1.0.5.tar.gz  rmr2_2.1.0.tar.gz
 ```
 
-##3. 安装依赖库
+### 3). 安装依赖库
 
-```{bash}
-命令行执行
+```{r}
+# 命令行执行
 ~ R CMD javareconf 
 ~ R
 
-启动R程序
+# 启动R程序
 install.packages("rJava")
 install.packages("reshape2")
 install.packages("Rcpp")
@@ -151,15 +150,16 @@ install.packages("RJSONIO")
 install.packages("functional")
 ```
 
-##4. 安装rhdfs库
+### 4). 安装rhdfs库
 
 ```{bash}
 ~ export HADOOP_CMD=/root/hadoop/hadoop-1.0.3/bin/hadoop
-~ export HADOOP_STREAMING=/root/hadoop/hadoop-1.0.3/contrib/streaming/hadoop-streaming-1.0.3.jar (rmr2会用到)
+# (rmr2会用到)
+~ export HADOOP_STREAMING=/root/hadoop/hadoop-1.0.3/contrib/streaming/hadoop-streaming-1.0.3.jar 
 ~ R CMD INSTALL /root/R/rhdfs_1.0.5.tar.gz 
 ```
 
-4.1 最好把HADOOP_CMD设置到环境变量
+#### 最好把HADOOP_CMD设置到环境变量
 
 ```{bash}
 ~ vi /etc/environment
@@ -170,36 +170,40 @@ HADOOP_STREAMING=/root/hadoop/hadoop-1.0.3/contrib/streaming/hadoop-streaming-1.
 ~ . /etc/environment
 ```
 
-##5. 安装rmr库
+### 5). 安装rmr库
 
 ```{bash}
 ~  R CMD INSTALL rmr2_2.1.0.tar.gz 
 ```
 
-##6. 安装rhbase库 (暂时跳过)
+### 6). 安装rhbase库: [RHadoop实践系列之四 rhbase安装与使用](http://blog.fens.me/rhadoop-hbase-rhase/)
 
-##7. 所有的安装包
+### 7). 所有的安装包
 
 ```{bash}
 ~ ls /disk1/system/usr/local/lib/R/site-library/
 digest  functional  iterators  itertools  plyr  Rcpp  reshape2  rhdfs  rJava  RJSONIO  rmr2  stringr
 ```
 
-##RHadoop程序用例
+## 3. RHadoop程序用例
 
-文字说明部分：
+#### 文字说明部分：
 
 安装好rhdfs和rmr两个包后，我们就可以使用R尝试一些hadoop的操作了。
 
 首先，是基本的hdfs的文件操作。
 
 查看hdfs文件目录
+```{r}
 hadoop的命令：hadoop fs -ls /user
-R语言函数：hdfs.ls(”/user/“)
+R语言函数：hdfs.ls("/user/")
+```
 
 查看hadoop数据文件
+```{r}
 hadoop的命令：hadoop fs -cat /user/hdfs/o_same_school/part-m-00000
-R语言函数：hdfs.cat(”/user/hdfs/o_same_school/part-m-00000″)
+R语言函数：hdfs.cat("/user/hdfs/o_same_school/part-m-00000″)
+```
 
 接下来，我们执行一个rmr算法的任务
 
@@ -244,9 +248,9 @@ MapReduce的R语言程序：
 
 我在HDFS上提前放置了数据文件/user/hdfs/o_same_school/part-m-00000。写wordcount的MapReduce函数，执行wordcount函数，最后用from.dfs从HDFS中取得结果。
 
-代码部分：
+#### 代码部分：
 
-##1. rhdfs包的使用
+### 1). rhdfs包的使用
 
 ```{r}
 #启动R程序
@@ -259,7 +263,7 @@ Be sure to run hdfs.init()
 > hdfs.init()
 ```
 
-##1.1 命令查看hadoop目录
+#### 1.1 命令查看hadoop目录
 
 ```{bash}
 ~ hadoop fs -ls /user
@@ -271,7 +275,7 @@ drwxr-xr-x   - root supergroup          0 2013-02-26 16:51 /user/hive
 drwxr-xr-x   - root supergroup          0 2013-03-06 17:21 /user/root
 ```
 
-##1.2 rhdfs查看hadoop目录
+#### 1.2 rhdfs查看hadoop目录
 
 ```{r}
 > hdfs.ls("/user/")
@@ -283,7 +287,7 @@ drwxr-xr-x   - root supergroup          0 2013-03-06 17:21 /user/root
 4 drwxr-xr-x  root supergroup    0 2013-03-06 17:21  /user/root
 ```
 
-##1.3 命令查看hadoop数据文件
+#### 1.3 命令查看hadoop数据文件
 
 ```{bash}
 ~ hadoop fs -cat /user/hdfs/o_same_school/part-m-00000
@@ -314,7 +318,7 @@ drwxr-xr-x   - root supergroup          0 2013-03-06 17:21 /user/root
 312,4070,北京师范大学经济学院,2004-06-14 15:35:52.0
 ```
 
-##1.4 rhdfs查看hadoop数据文件
+#### 1.4 rhdfs查看hadoop数据文件
 
 ```{r}
 >  hdfs.cat("/user/hdfs/o_same_school/part-m-00000")
@@ -345,7 +349,7 @@ drwxr-xr-x   - root supergroup          0 2013-03-06 17:21 /user/root
 [24] "312,4070,北京师范大学经济学院,2004-06-14 15:35:52.0"
 ```
 
-##2. rmr2包的使用
+### 2). rmr2包的使用
 
 ```{r}
 #启动R程序
@@ -360,7 +364,7 @@ Loading required package: plyr
 Loading required package: reshape2
 ```
 
-##2.1 执行r任务
+#### 2.1 执行r任务
 
 ```{r}
 > small.ints = 1:10
@@ -369,7 +373,7 @@ Loading required package: reshape2
 [1]   1   4   9  16  25  36  49  64  81 100
 ```
 
-##2.2 执行rmr2任务
+#### 2.2 执行rmr2任务
 
 ```{r}
 > small.ints = to.dfs(1:10)
@@ -412,7 +416,7 @@ $val
 [10,] 10 100
 ```
 
-##2.3 wordcount执行rmr2任务
+#### 2.3 wordcount执行rmr2任务
 
 ```{r}
 > input<- '/user/hdfs/o_same_school/part-m-00000'
@@ -512,34 +516,4 @@ $val
 [39] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### 转载请注明出处：http://blog.fens.me/rhadoop-rhadoop/

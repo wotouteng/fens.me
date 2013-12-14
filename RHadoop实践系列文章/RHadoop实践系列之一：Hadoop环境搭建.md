@@ -23,6 +23,8 @@ RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”R
 2. Hadoop完全分步式集群搭建
 3. HDFS测试
 
+> 每一章节，都会分为”文字说明部分”和”代码部分”，保持文字说明与代码的连贯性。
+
 ## 1. Haddop环境准备
 
 #### 文字说明部分：
@@ -280,7 +282,8 @@ hadoop环境启动成功，我们进行一下hdfs的简单测试。
 
 #### 代码部分：
 
-nn.qa.com:
+nn.qa.com节点：
+
 ```{bash}
 1. cd /hadoop/conan/hadoop-0.29.2
 2. bin/hadoop fs -mkdir /test
