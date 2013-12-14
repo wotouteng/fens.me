@@ -10,10 +10,11 @@ RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”R
 #### 关于作者：
 
 + Author：张丹(Conan)  
-+ Date: 2013-04-07  
 + Weibo: @Conan_Z  
 + Email: bsspirit@gmail.com  
 + Blog: http://blog.fens.me
+ 
+#### 转载请注明出处：http://blog.fens.me/cos-beijing-meeting-20130623/
 
 ![COS沙龙](http://blog.fens.me/wp-content/uploads/2013/06/cos-rhadoop.png)
 
@@ -104,22 +105,5 @@ http://v.youku.com/v_show/id_XNTc4MTYxNzQw.html
 salon@cos.name
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### 转载请注明出处：http://blog.fens.me/cos-beijing-meeting-20130623/
 
