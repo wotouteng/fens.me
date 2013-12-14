@@ -443,24 +443,24 @@ public class Dog {
 
 ```{java}
 public abstract class Vehicle { 
-      abstract void go(Address address);
+    abstract void go(Address address);
 }
 
 public class Car extends Vehicle{ 
-      @Override public void go(Address address){ 
-        System.out.println("Car to " + address.getName());
-      }
+    @Override public void go(Address address){ 
+      System.out.println("Car to " + address.getName());
+    }
 }
 
 public class Plane extends Vehicle{ 
-      @Override void go(Address address) { 
-        System.out.println("Plane to " + address.getName());
-      }
- }
+    @Override void go(Address address) { 
+      System.out.println("Plane to " + address.getName());
+    }
+}
 
  //多态，父类引用指向子类对象，实际传过来的是抽象类Vehicle的子类，然后编译器会根据具体实现类，来找实现方法。
 public void drive(Vehicle v){ 
-　　  v.go(new Address("杭州(abstract)"));
+    v.go(new Address("杭州(abstract)"));
 }
 ```
 
