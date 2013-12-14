@@ -15,7 +15,7 @@ RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”R
 + Email: bsspirit@gmail.com  
 + Blog: http://blog.fens.me
 
-> 本文难度为中高级。
+#### 转载请注明出处：http://blog.fens.me/rhadoop-mapreduce-rmr/
 
 ## 第三篇 R实现MapReduce的协同过滤算法，分为3个章节。
 
@@ -23,6 +23,7 @@ RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”R
 2. R本地程序实现
 3. R基于Hadoop分步式程序实现
 
+> 本文难度为中高级。
 
 > 每一章节，都会分为”文字说明部分”和”代码部分”，保持文字说明与代码的连贯性。
 
@@ -38,7 +39,7 @@ RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”R
 基于物品的协同过滤算法，是给用户推荐和他之前喜欢的物品相似的物品。
 基于物品的协同过滤算法，是目前广泛使用的一种推荐算法，像Netflix, YouTube, Amazon等。
 
-算法主要分为两步：
+**算法主要分为两步：**
 
 1. 计算物品之间的相似度  
 2. 根据物品的相似度和用户的历史行为给用户生成推荐列表
@@ -93,7 +94,7 @@ small.csv
 
 首先，通过R语言实现基于物品的协同过滤算法，为和RHadoop实现进行对比。这里我使用”Mahout In Action”书里，第一章第六节介绍的分步式基于物品的协同过滤算法进行实现。Chapter 6: Distributing recommendation computations
 
-算法的思想：  
+**算法的思想:**
 
 1. 建立物品的同现矩阵  
 2. 建立用户对物品的评分矩阵  
@@ -371,7 +372,6 @@ val:同现矩阵的数据框值(item,item,Freq)
 矩阵格式，要与”2. 建立用户对物品的评分矩阵”的格式一致，把异构的两种数据源，合并为同一种数据格式，为”3. 合并 同现矩阵 和 评分矩阵”做数据基础。
 
 ```{r}
-
 $key
 [1] 101 101 101 101 101 101 101 102 102 102 102 102 102 103 103 103 103 103 103
 [20] 104 104 104 104 104 104 104 105 105 105 105 105 105 105 106 106 106 106 106
@@ -431,7 +431,6 @@ val:用户对物品打分矩阵
 矩阵格式，要与”2) 对物品组合列表进行计数，建立物品的同现矩阵”的格式一致，把异构的两种数据源，合并为同一种数据格式，为”3. 合并 同现矩阵 和 评分矩阵”做数据基础
 
 ```{r}
-
 $key
 [1] 101 101 101 101 101 102 102 102 103 103 103 103 104 104 104 104 105 105 106
 [20] 106 107
@@ -582,17 +581,17 @@ user item pref
 35 5 107 11.5
 ```
 
-## rmr2使用提示：
+### rmr2使用提示：
 
-### 1) rmr.options(backend = ‘hadoop’)
+#### 1) rmr.options(backend = ‘hadoop’)
 
 这里backend有两个值，hadoop,local。hadoop是默认值，使用hadoop环境运行程序。local是一个本地测试的设置，已经不建议再使用。我在开发时，试过local设置，运行速度非常快，模拟了hadoop的运行环境。但是，local模式下的代码，不能和hadoop模式下完全兼容，变动也比较大，因此不建议大家使用。
 
-### 2) equijoin(…,outer=c(‘left’))
+#### 2) equijoin(…,outer=c(‘left’))
 
 这里outer包括了4个值，c(“”, “left”, “right”, “full”)，非常像数据库中两个表的join操作
 
-### 3) keyval(k,v)
+#### 3) keyval(k,v)
 
 mapReduce的操作，需要key和valve保存数据。如果直接输出，或者输出的未加key，会有一个警告Converting to.dfs argument to keyval with a NULL key。再上一篇文章中，rmr2的例子中就有类似的情况，请大家注意修改代码。
 
@@ -666,7 +665,7 @@ train.mr<-mapreduce(
   }
 )
 
-from.dfs(train.mr)
+> from.dfs(train.mr)
 
     $key
      [1] 101 101 101 101 101 101 101 101 101 101 101 101 101 101 101 102 102 102 102
@@ -694,7 +693,8 @@ step2.mr<-mapreduce(
     keyval(key,val)
   }
 )
-from.dfs(step2.mr)
+
+> from.dfs(step2.mr)
 
     $key
      [1] 101 101 101 101 101 101 101 102 102 102 102 102 102 103 103 103 103 103 103
@@ -759,7 +759,8 @@ train2.mr<-mapreduce(
     keyval(key,val)
   }
 )
-from.dfs(train2.mr)
+
+> from.dfs(train2.mr)
 
     $key
      [1] 101 101 101 101 101 102 102 102 103 103 103 103 104 104 104 104 105 105 106
@@ -801,7 +802,8 @@ eq.hdfs<-equijoin(
   },
   outer = c("left")
 )
-from.dfs(eq.hdfs)
+
+> from.dfs(eq.hdfs)
 
     $key
     NULL
@@ -958,7 +960,8 @@ cal.mr<-mapreduce(
     keyval(val$k.l,val)
   }
 )
-from.dfs(cal.mr)
+
+> from.dfs(cal.mr)
 
     $key
       [1] 101 101 101 101 101 101 101 101 101 101 101 101 101 101 101 101 101 101
@@ -1121,7 +1124,8 @@ result.mr<-mapreduce(
     keyval(val2$user,val2)
   }
 )
-from.dfs(result.mr)
+
+> from.dfs(result.mr)
 
     $key
      [1] 1 1 1 1 1 1 1 2 2 2 2 2 2 2 3 3 3 3 3 3 3 4 4 4 4 4 4 4 5 5 5 5 5 5 5
@@ -1171,5 +1175,5 @@ from.dfs(result.mr)
 如有问题请给我留言，我很高兴与大家讨论。
 
 
-
+#### 转载请注明出处：http://blog.fens.me/rhadoop-mapreduce-rmr/
 
