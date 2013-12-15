@@ -1,17 +1,39 @@
 RHadoop实验 – 统计邮箱出现次数
 ==============
 
-##需求描述：基于RHADOOP通过rmr包实现MapReduce算法：
+[RHadoop实践系列文章](http://blog.fens.me/series-rhadoop/)，包含了R语言与Hadoop结合进行海量数据分析。Hadoop主要用来存储海量数据，R语言完成MapReduce 算法，用来替代Java的MapReduce实现。有了RHadoop可以让广大的R语言爱好者，有更强大的工具处理大数据1G, 10G, 100G, TB, PB。 由于大数据所带来的单机性能问题，可能会一去不复返了。
 
-1. 计算邮箱域出现了多少次  
-2. 按次数从大到小排序
+RHadoop实践是一套系列文章，主要包括[”Hadoop环境搭建”](http://blog.fens.me/rhadoop-hadoop/)，[”RHadoop安装与使用”](http://blog.fens.me/rhadoop-rhadoop/)，[”R实现MapReduce的协同过滤算法”](http://blog.fens.me/rhadoop-mapreduce-rmr/)，[”HBase和rhbase的安装与使用”](http://blog.fens.me/rhadoop-hbase-rhase/)。对于单独的R语言爱好者，Java爱好者，或者Hadoop爱好者来说，同时具备三种语言知识并不容 易。此文虽为入门文章，但R,Java,Hadoop基础知识还是需要大家提前掌握。
+
+#### 关于作者
+
++ 张丹(Conan), 程序员Java,R,PHP,Javascript
++ weibo：@Conan_Z
++ blog: http://blog.fens.me
++ email: bsspirit@gmail.com
+
+#### 转载请注明出处：http://blog.fens.me/rhadoop-demo-email/
+
+![RHadoop实验 – 统计邮箱出现次数](http://blog.fens.me/wp-content/uploads/2013/05/rhadoop-demo-email.png)
+
+#### 目录
+1. 需求描述
+2. 实验数据
+3. 算法实现
+
+## 1.需求描述
+
+基于RHADOOP通过rmr包实现MapReduce算法：
+
++ 1). 计算邮箱域出现了多少次  
++ 2). 按次数从大到小排序
 
 例如：
 
 163.com,14  
 sohu.com,2
 
-##实验数据：
+## 2.实验数据：
 
 ```{bash}
 wolys@21cn.com
@@ -57,11 +79,11 @@ xiao2018@126.com
 beibeilong012@126.com
 ```
 
-##算法实现
+## 3. 算法实现
 
-###1.计算邮箱域出现了多少次
+### 1).计算邮箱域出现了多少次
 
-```{bash}
+```{r}
 library(rmr2)
 data<-read.table(file="hadoop15.txt")
 d0<-to.dfs(keyval(1, data))
@@ -70,7 +92,7 @@ from.dfs(d0)
 
 输出：
 
-```{bash}
+```{r}
 $key
 [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 [39] 1 1 1
@@ -120,7 +142,8 @@ V1
 
 ```
 
-```{bash}
+计算邮箱域出现了多少次
+```{r}
 mr<-function(input=d0){
 map<-function(k,v){
 keyval(word(as.character(v$V1), 2, sep = fixed('@')),1)
@@ -132,9 +155,10 @@ d1<-mapreduce(input=input,map=map,reduce=reduce,combine=TRUE)
 }
 d1<-mr(d0)
 from.dfs(d1)
+```
 
 输出：
-
+```{r}
 $key
 [1] "126.com" "163.com" "21cn.com" "gmail.com" "qq.com"
 [6] "sina.com" "sohu.com" "yahoo.cn" "yahoo.com.cn"
@@ -142,9 +166,9 @@ $val
 [1] 9 14 1 1 9 2 2 1 2
 ```
 
-###2. 按次数从大到小排序
+### 2). 按次数从大到小排序
 
-```{bash}
+```{r}
 sort<-function(input=d1){
 map<-function(k,v){
 keyval(1,data.frame(k,v))
@@ -161,8 +185,7 @@ result$val
 ```
 
 输出：
-
-```{bash}
+```{r}
 k v
 2 163.com 14
 1 126.com 9
@@ -175,40 +198,4 @@ k v
 8 yahoo.cn 1
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### 转载请注明出处：http://blog.fens.me/rhadoop-demo-email/
