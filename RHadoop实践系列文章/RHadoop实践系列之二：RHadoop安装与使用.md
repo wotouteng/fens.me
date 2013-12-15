@@ -132,7 +132,7 @@ rhbase_1.1.tar.gz  rhdfs_1.0.5.tar.gz  rmr2_2.1.0.tar.gz
 
 ### 3). 安装依赖库
 
-```{r}
+```{bash}
 # 命令行执行
 ~ R CMD javareconf 
 ~ R
@@ -192,13 +192,13 @@ digest  functional  iterators  itertools  plyr  Rcpp  reshape2  rhdfs  rJava  RJ
 首先，是基本的hdfs的文件操作。
 
 查看hdfs文件目录
-```{r}
+```{bash}
 hadoop的命令：hadoop fs -ls /user
 R语言函数：hdfs.ls("/user/")
 ```
 
 查看hadoop数据文件
-```{r}
+```{bash}
 hadoop的命令：hadoop fs -cat /user/hdfs/o_same_school/part-m-00000
 R语言函数：hdfs.cat("/user/hdfs/o_same_school/part-m-00000″)
 ```
@@ -207,14 +207,14 @@ R语言函数：hdfs.cat("/user/hdfs/o_same_school/part-m-00000″)
 
 普通的R语言程序：
 
-```{r}
+```{bash}
 > small.ints = 1:10
 > sapply(small.ints, function(x) x^2)
 ```
 
 MapReduce的R语言程序：
 
-```{r}
+```{bash}
 > small.ints = to.dfs(1:10)
 > mapreduce(input = small.ints, map = function(k, v) cbind(v, v^2))
 > from.dfs("/tmp/RtmpWnzxl4/file5deb791fcbd5")
@@ -224,7 +224,7 @@ MapReduce的R语言程序：
 
 第二个，rmr的例子是wordcount，对文件中的单词计数
 
-```{r}
+```{bash}
 > input<- '/user/hdfs/o_same_school/part-m-00000'
 > wordcount = function(input, output = NULL, pattern = " "){
 
@@ -250,7 +250,7 @@ MapReduce的R语言程序：
 
 ### 1). rhdfs包的使用
 
-```{r}
+```{bash}
 #启动R程序
 > library(rhdfs)
 
@@ -275,7 +275,7 @@ drwxr-xr-x   - root supergroup          0 2013-03-06 17:21 /user/root
 
 #### 1.2 rhdfs查看hadoop目录
 
-```{r}
+```{bash}
 > hdfs.ls("/user/")
 
   permission owner      group size          modtime        file
@@ -318,7 +318,7 @@ drwxr-xr-x   - root supergroup          0 2013-03-06 17:21 /user/root
 
 #### 1.4 rhdfs查看hadoop数据文件
 
-```{r}
+```{bash}
 >  hdfs.cat("/user/hdfs/o_same_school/part-m-00000")
 
  [1] "10,3,tsinghua university,2004-05-26 15:21:00.0"
@@ -349,7 +349,7 @@ drwxr-xr-x   - root supergroup          0 2013-03-06 17:21 /user/root
 
 ### 2). rmr2包的使用
 
-```{r}
+```{bash}
 #启动R程序
 > library(rmr2)
 
@@ -364,7 +364,7 @@ Loading required package: reshape2
 
 #### 2.1 执行r任务
 
-```{r}
+```{bash}
 > small.ints = 1:10
 > sapply(small.ints, function(x) x^2)
 
@@ -373,7 +373,7 @@ Loading required package: reshape2
 
 #### 2.2 执行rmr2任务
 
-```{r}
+```{bash}
 > small.ints = to.dfs(1:10)
 
 13/03/07 12:12:55 INFO util.NativeCodeLoader: Loaded the native-hadoop library
@@ -416,7 +416,7 @@ $val
 
 #### 2.3 wordcount执行rmr2任务
 
-```{r}
+```{bash}
 > input<- '/user/hdfs/o_same_school/part-m-00000'
 > wordcount = function(input, output = NULL, pattern = " "){
 

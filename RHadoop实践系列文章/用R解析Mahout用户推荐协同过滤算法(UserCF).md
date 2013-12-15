@@ -36,7 +36,7 @@ Mahout是Hahoop家族用于机器学习的一个框架，包括三个主要部�
 
 Mahout版本
 
-```{xml} 
+```{bash} 
 <dependency>
 <groupId>org.apache.mahout</groupId>
 <artifactId>mahout-core</artifactId>
@@ -97,7 +97,7 @@ uid:5
 
 ### 1). 建立数据模型
 
-```{r}
+```{bash}
 
 FileDataModel<-function(file){
 data<-read.csv(file,header=FALSE)
@@ -119,7 +119,7 @@ M
 
 ### 2). 欧氏距离相似度算法
 
-```{r}
+```{bash}
 
 EuclideanDistanceSimilarity<-function(M){
 row<-nrow(M)
@@ -153,7 +153,7 @@ s
 
 ### 3). 最紧邻算法
 
-```{r}
+```{bash}
 NearestNUserNeighborhood<-function(S,n){
 row<-nrow(S)
 neighbor<-matrix(0, row, n)
@@ -171,7 +171,7 @@ neighbor
 
 ### 4). 推荐算法
 
-```{r}
+```{bash}
 UserBasedRecommender<-function(uid,n,M,S,N){
 row<-ncol(N)
 col<-ncol(M)
@@ -218,7 +218,7 @@ r2
 
 ### 5). 运行程序
 
-```{r}
+```{bash}
 
 FILE<-"testCF.csv"
 NEIGHBORHOOD_NUM<-2
@@ -343,13 +343,13 @@ R5<-UserBasedRecommender(5,RECOMMENDER_NUM,M,S,N);R5
 
 比如，算欧氏距离时，并不是标准的
 
-```{r}
+```{bash}
 similar = 1/(1+sqrt( (a-b)2 + (a-c)2 ))
 ```
 
 而是改进的算法
 
-```{r}
+```{bash}
 similar = n/(1+sqrt( (a-b)2 + (a-c)2 )) 
 ```
 

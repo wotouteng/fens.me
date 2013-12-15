@@ -124,7 +124,7 @@ install.packages("rJava")
 
 安装RHive
 
-'''{bash}
+```{bash}
 install.packages("RHive")
 
 library(RHive)
@@ -137,7 +137,7 @@ call rhive.init() because HIVE_HOME is set.
 
 ## 4. RHive函数库
 
-'''{bash}
+```{bash}
 rhive.aggregate        rhive.connect          rhive.hdfs.exists      rhive.mapapply
 rhive.assign           rhive.desc.table       rhive.hdfs.get         rhive.mrapply
 rhive.basic.by         rhive.drop.table       rhive.hdfs.info        rhive.napply
@@ -157,7 +157,7 @@ rhive.close            rhive.hdfs.du          rhive.load.table2
 
 ### Hive和RHive的基本操作对比：
 
-'''{bash}
+```{bash}
 #连接到hive
 Hive:  hive shell
 RHive: rhive.connect("192.168.1.210")
@@ -189,7 +189,7 @@ RHive: rhive.close()
 
 ## 5. RHive基本使用操作
 
-'''{bash}
+```{bash}
 #初始化
 rhive.init()
 
@@ -276,7 +276,7 @@ rhive.query("select * from rhive_result_20130626173626");
 
 Hive操作HDFS
 
-'''{bash}
+```{bash}
 #查看hdfs文件目录
 rhive.hdfs.ls()
   permission owner      group length      modify-time   file

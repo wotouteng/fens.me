@@ -83,7 +83,7 @@ beibeilong012@126.com
 
 ### 1).计算邮箱域出现了多少次
 
-```{r}
+```{bash}
 library(rmr2)
 data<-read.table(file="hadoop15.txt")
 d0<-to.dfs(keyval(1, data))
@@ -92,7 +92,7 @@ from.dfs(d0)
 
 输出：
 
-```{r}
+```{bash}
 $key
 [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 [39] 1 1 1
@@ -143,7 +143,7 @@ V1
 ```
 
 计算邮箱域出现了多少次
-```{r}
+```{bash}
 mr<-function(input=d0){
 map<-function(k,v){
 keyval(word(as.character(v$V1), 2, sep = fixed('@')),1)
@@ -158,7 +158,7 @@ from.dfs(d1)
 ```
 
 输出：
-```{r}
+```{bash}
 $key
 [1] "126.com" "163.com" "21cn.com" "gmail.com" "qq.com"
 [6] "sina.com" "sohu.com" "yahoo.cn" "yahoo.com.cn"
@@ -168,7 +168,7 @@ $val
 
 ### 2). 按次数从大到小排序
 
-```{r}
+```{bash}
 sort<-function(input=d1){
 map<-function(k,v){
 keyval(1,data.frame(k,v))
@@ -185,7 +185,7 @@ result$val
 ```
 
 输出：
-```{r}
+```{bash}
 k v
 2 163.com 14
 1 126.com 9

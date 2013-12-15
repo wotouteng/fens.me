@@ -113,7 +113,7 @@ R 会话中创建的所有对象可以永久地保存在一个文件中以便于
 ### 4). 向量和赋值
 向量是由一串有序数值构成的序列
 
-```{r}
+```{bash}
 x <- c(10.4, 5.6, 3.1, 6.4, 21.7)
 ```
 
@@ -121,13 +121,13 @@ x <- c(10.4, 5.6, 3.1, 6.4, 21.7)
 
 赋值也可以用函数assign()实现。
 
-```{r}
+```{bash}
 assign("x", c(10.4, 5.6, 3.1, 6.4, 21.7))
 ```
 
 赋值符<-,->可以看作是该命令一个语义上的缩写。
 
-```{r}
+```{bash}
 c(10.4, 5.6, 3.1, 6.4, 21.7) -> x
 ```
 
@@ -137,7 +137,7 @@ c(10.4, 5.6, 3.1, 6.4, 21.7) -> x
 + 表达式中短的向量会被循环使用以达到最长向量的长度。
 + 对于一个常数就是简单的重复。
 
-```{r}
+```{bash}
 v <- 2*x + y + 1
 ```
 
@@ -151,7 +151,7 @@ paste():可以把单独的字符连成字符串，可以有任意多的参数。
 
 修改分隔符换成”“
 
-```{r}
+```{bash}
 labs <- paste(c("X","Y"), 1:10, sep="")
 ```
 
@@ -160,25 +160,25 @@ labs <- paste(c("X","Y"), 1:10, sep="")
 
 + 逻辑向量:索引向量必须和被挑选元素的向量长度一致。向量中对应索引向量元素为TRUE 的元素将会被选中，而那些对应FALSE 的元素则被忽略。
 
-```{r}
+```{bash}
 y <- x[!is.na(x)]
 ```
 
 + 正整数向量:索引向量必须是1, 2, … , length(x)的子向量。索引向量中索引对应的元素将会被选中，并且在结果向量中的次序和索引向量中的次序一致。这种索引向量可以是任意长度的，结果向量的长度和索引向量完全一致。
 
-```{r}
+```{bash}
 x[1:10]
 ```
 
 + 负整数向量:这种索引向量指定被排除的元素而不是包括进来。
 
-```{r}
+```{bash}
 y <- x[-(1:5)]
 ```
 
 + 字符串向量:这可能仅仅用于一个对象可以用names 属性来识别它的元素。名字向量的子向量可以像上面第二条提到的正整数标签一样使用。
 
-```{r}
+```{bash}
 fruit <- c(5, 10, 1, 20) 
 names(fruit) <- c("orange”, “banana”, “apple”, “peach”) 
 lunch <- fruit[c(“apple”,“orange”)]
@@ -188,19 +188,19 @@ lunch <- fruit[c(“apple”,“orange”)]
 
 算术运算符：
 
-```{r}
+```{bash}
  + - * / 
 ```
 
 逻辑运算符：
 
-```{r}
+```{bash}
   <，<=，>，>=，==,!=, &, |, ! 
 ```
 
 数学函数：
 
-```{r}
+```{bash}
 log，exp，sin，cos，tan，sqrt ，max ，min，range，length，sum，prod，var
 ```
 
@@ -210,13 +210,13 @@ log，exp，sin，cos，tan，sqrt ，max ，min，range，length，sum，prod�
 ### 6). 控制语句
 #### 条件语句:if
 
-```{r}
+```{bash}
 if (expr1 ) expr2 else expr3
 ```
 
 #### 循环控制：for,repeat,while
 
-```{r}
+```{bash}
 for (name in expr1 ) expr2
 ```
 
@@ -224,7 +224,7 @@ for (name in expr1 ) expr2
 
 **警告：相比其他程序语言，R代码里面很少使用for(),执行效率很低**
 
-```{r}
+```{bash}
 repeat expr
 while (condition) expr
 ```
@@ -239,13 +239,13 @@ while (condition) expr
 ### 8). 缺损值
 在某些情况下，向量的元素可能有残缺. 当一个元素或者值在统计的时候"不可得到"（not available）或者"值丢失" （missing value），相关位置可能会被保留并且赋予一个特定的值NA。 任何含有NA 数据的运算结果都将是NA。 函数is.na(x)返回一个和x同等长度的向量。它的某个元素值为TRUE 当且仅当x中对应元素是NA。
 
-```{r}
+```{bash}
 z <- c(1:3,NA); ind <- is.na(z)
 ```
 
 第二种"缺损"值，也称为非数值NaN(Not a Number)
 
-```{r}
+```{bash}
 0/0 或 Inf
 ```
 
@@ -257,7 +257,7 @@ R操作的实体是对象。实数或复数向量，逻辑向量和字符串向�
 
 所有对象都有模式(mode)和长度(length)两个内在属性
 
-```{r}
+```{bash}
 mode(x),length(x)
 ```
 
@@ -265,7 +265,7 @@ mode(x),length(x)
 + attributes(x):给出对象当前定义的非内在属性的列表。
 + attr(object, name): 可以用来设置的外部属性。
 
-```{r}
+```{bash}
 z<-c(1:3,NA) 
 attr(z, "name") <- "abc" 
 attributes(z)
@@ -279,7 +279,7 @@ attributes(z)
 ### 10). 因子(factor)
 假定我们有一份来自澳大利亚所有州和行政区的信息样本 以及他们各自所在地的州名。
 
-```{r}
+```{bash}
 state <- c("tas", "sa", "qld", "nsw", "nsw", "nt")
 ```
 
@@ -287,7 +287,7 @@ state <- c("tas", "sa", "qld", "nsw", "nsw", "nt")
 
 创建因子factor：
 
-```{r}
+```{bash}
 statef <- factor(state)
 statef
 [1] tas sa  qld nsw nsw nt 
@@ -296,7 +296,7 @@ Levels: nsw nt qld sa tas
 
 levels():可以用来得到因子的水平（levels）。
 
-```{r}
+```{bash}
 levels(statef)
 [1] "nsw" "nt"  "qld" "sa"  "tas"
 ```
@@ -304,7 +304,7 @@ levels(statef)
 #### 函数tapply()和不规则数组
 为计算样本中每个州的平均收入，我们可以用函数tapply()：
 
-```{r}
+```{bash}
 incomes <- c(60, 49, 40, 61, 64, 60)
 incmeans <- tapply(incomes, statef, mean)
 > incmeans
@@ -326,7 +326,7 @@ nsw   nt  qld   sa  tas
 向量只有在定义了dim属性后才能作为数组在R中使用。  
 假定，z是一个含1500个元素的向量
 
-```{r}
+```{bash}
 z<-seq(1,1500)
 dim(z) <- c(3,5,100)
 attributes(z)
@@ -344,7 +344,7 @@ $dim
 
 假定向量h 有24个或更少的数值，那么命令
 
-```{r}
+```{bash}
 h<-seq(1,24)
 Z <- array(h, dim=c(3,4,2))
 #等价操作
@@ -362,7 +362,7 @@ dim(Z) <- c(3,4,2)
 #### 数组的外积
 数组一个非常重要的运算就是外积运算（outer product）。如果a 和b 是两个数值数组，它们的外积将是这样的一个数组：维度向量通过连接两个操作数的维度向量得到；数据向量则由a的数据向量元素和b的数据向量元素的所有可能乘积得到。外积是通过特别的操作符%o%实现：
 
-```{r}
+```{bash}
 ab <- a %o% b
 ab <- outer(a, b, "*")
      [,1] [,2] [,3]
@@ -373,7 +373,7 @@ ab <- outer(a, b, "*")
 
 命令中的乘法操作符可以被任意一个双变量函数代替。
 
-```{r}
+```{bash}
 x<-c(1,2,3);y<-c(2,3,4)
 f <- function(x, y) cos(y)/(1 + x^2)
 z <- outer(x, y, f)
@@ -383,7 +383,7 @@ z <- outer(x, y, f)
 #### 数组的广义转置
 函数aperm(a, perm) 可以用来重排一个数组a
 
-```{r}
+```{bash}
 B <- aperm(z, c(2,1))
 #等价操作
 t(z)
@@ -397,19 +397,19 @@ t(z)
 操作符%*% 用于矩阵相乘。  
 如果A和B是大小一样的方阵，那么
 
-```{r}
+```{bash}
 A * B
 ```
 
 将是一个对应元素乘积的矩阵，而
 
-```{r}
+```{bash}
 A %*% B
 ```
 
 则是一个矩阵积。如果x 是一个向量，那么
 
-```{r}
+```{bash}
 x %*% A %*% x
 ```
 
@@ -419,26 +419,26 @@ diag():返回以该向量元素为对角元素的对角矩阵。
 #### 性方程和求逆
 求解线性方程组是矩阵乘法的逆运算。当下面的命令运行后，
 
-```{r}
+```{bash}
 b <- A %*% x
 ```
 
 如果仅仅给出A 和b，那么x 就是该线性方程组的根。在R 里面，用命令
 
-```{r}
+```{bash}
 solve(A,b)
 ```
 
 矩阵的逆可以用下面的命令计算，
 
-```{r}
+```{bash}
 solve(A)
 ```
 
 #### 特征值和特征向量
 ev<-eigen(Sm):用来计算矩阵Sm 的特征值和特征向量。这个函数的返回值是一个 含有values 和vectors 两个分量的列表。
 
-```{r}
+```{bash}
 ev <- eigen(Sm)
 ```
 
@@ -449,19 +449,19 @@ svd(M): 可以把任意一个矩阵M作为一个参数, 且对M 进行奇异值�
 
 如果M 是一个方阵，就不难看出
 
-```{r}
+```{bash}
 absdetM <- prod(svd(M)$d)
 ```
 
 计算M 行列式的绝对值。如果在各种矩阵中都需要这种运算，我们可以把它定义为一个R 函数
 
-```{r}
+```{bash}
 absdet <- function(M) prod(svd(M)$d)
 ```
 
 此后, 我们可以把absdet() 当一个R 函数使用了。R有一个计算行列式的内置函数det和另外一个给出符号和模的函数。
 
-```{r}
+```{bash}
 evals <- eigen(Sm, only.values = TRUE)$values
 ```
 
@@ -470,7 +470,7 @@ evals <- eigen(Sm, only.values = TRUE)$values
 对数组实现连接操作的函数c()  
 将一个数组强制转换成简单向量的标准方法是用函数as.vector()。
 
-```{r}
+```{bash}
 vec <- as.vector(X)
 #等价操作
 vec <- c(X)
@@ -479,7 +479,7 @@ vec <- c(X)
 #### 因子的频率表
 单个因子会把各部分数据分成不同的组。类似的是，一对因子可以实现交叉分组等。函数table() 可以从等长的不同因子中计算出频率表。如果有k 个因子参数，那么结果将是一个k-维的频率分布数组。
 
-```{r}
+```{bash}
 statefr <- table(statef) 
 statefr <- tapply(statef, statef, length)
 ```
@@ -487,7 +487,7 @@ statefr <- tapply(statef, statef, length)
 ### 13). 列表(list)
 R的列表是一个以对象的有序集合构成的对象。列表中包含的对象又称为它的分量（components）。分量可以是不同的模式或类型，如一个列表可以同时包括数值向量，逻辑向量，矩阵，复向量，字符数组，函数等等。
 
-```{r}
+```{bash}
 Lst <- list(name="Fred", wife="Mary", no.children=3,child.ages=c(4,7,9))
 ```
 
@@ -500,7 +500,7 @@ Lst[5] <- list(matrix=Mat)
 #### 列表连接
 当连接函数c() 的参数中有列表对象时，结果就是一个列表模式的对象。它的分量是那些当作参数的列表。
 
-```{r}
+```{bash}
 list.ABC <- c(list.A, list.B, list.C)
 ```
 
@@ -518,7 +518,7 @@ list.ABC <- c(list.A, list.B, list.C)
 #### 创建数据框
 可以通过函数data.frame 创建符合上面对列(分量)限制的数据框对象：
 
-```{r}
+```{bash}
 accountants <- data.frame(home=statef, loot=incomes)
 ```
 
@@ -527,7 +527,7 @@ accountants <- data.frame(home=statef, loot=incomes)
 #### 绑定任意的列表
 attach() 是一个泛型函数。它不仅允许搜索路径绑定目录和数据框，而且还可以绑定其他对象。所以任何其他"list" 模式的对象都可以这样绑定：
 
-```{r}
+```{bash}
 attach(any.old.list)
 ```
 
@@ -536,7 +536,7 @@ attach(any.old.list)
 #### 管理搜索路径
 search(): 显示当前的搜索路径。它可以用来跟踪已被绑定或者绑定去除的列表和数据框(以及包)。
 
-```{r}
+```{bash}
 search() 
 [1] “.GlobalEnv” “Autoloads” “package:base” 
 ```
@@ -545,7 +545,7 @@ search()
 
 lentils 被绑定后，我们可以看到
 
-```{r}
+```{bash}
 search() 
 [1] ".GlobalEnv" "lentils" "Autoloads" "package:base"
 ls(2) 
@@ -566,14 +566,14 @@ ls (或者objects) 可以用来查看搜索路径中任何位置的内容。
 #### 访问内置数据
 R 提供了大约100个内置的数据集(在包datasets 中)，其他的包(包括和R捆绑发布的推荐包) 也提供了一些作为例子的数据集。可以用下面的命令查看当前能访问的数据集列表
 
-```{r}
+```{bash}
 data()
 ```
 
 #### 从其他R 包里面导入数据
 为了访问某个特定包的数据，可以使用参数package，例如
 
-```{r}
+```{bash}
 data(package=“rpart”) 
 data(Puromycin, package=“datasets”)
 ```
@@ -583,7 +583,7 @@ data(Puromycin, package=“datasets”)
 #### 编辑数据
 edit(x):调用数据框和矩阵时，R 会产生一个电子表形式的编辑环境。
 
-```{r}
+```{bash}
 xnew <- edit(xold)
 ```
 
@@ -592,7 +592,7 @@ R语言允许用户创建自己的函数（function）对象,如mean(), var(),po
 
 一个函数是通过下面的语句形式定义的，
 
-```{r}
+```{bash}
 name <- function(args, ...) {}
 ```
 
@@ -601,7 +601,7 @@ name <- function(args, ...) {}
 函数定义如下：
 
 
-```{r}
+```{bash}
 twosam <- function(y1, y2) {
     n1 <- length(y1); n2 <- length(y2)
     yb1 <- mean(y1); yb2 <- mean(y2)
@@ -617,7 +617,7 @@ twosam(a,b)
 #### 参数命名和默认值
 和产生正则序列一样，如果被调用函数的参数以"name=object"方式给出，它们可以用任何顺序设置。但是，参数赋值序列可能以未命名的，位置特异性的方式给出，同时也有可能在这些位置特异性的参数后加上命名参数赋值。 因此，如果有下面方式定义的函数fun1
 
-```{r}
+```{bash}
 fun1 <- function(data, data.frame, graph, limit) {}
 ```
 
@@ -625,7 +625,7 @@ fun1 <- function(data, data.frame, graph, limit) {}
 一个函数的参数设置可以传递给另外一个函数。这个可以通过给函数增加一个额外的参数来实现。
 举例如plot
 
-```{r}
+```{bash}
 plot
 function (x, y, ...)
 ```
@@ -635,7 +635,7 @@ function (x, y, ...)
 
 "强赋值"操作符 <<- :如果想在一个函数里面全局赋值或者永久赋值
 
-```{r}
+```{bash}
 fscope<-function(){
   a<-1
   b<<-2
@@ -650,7 +650,7 @@ fscope<-function(){
 + 局部变量由函数内部表达式的值决定的。既不是形式参数又不是局部变量的变量是自由变量。
 + 自由变量如果被赋值将会变成局部变量
 
-```{r}
+```{bash}
 
 z<-45
 f <- function(x) {
@@ -673,7 +673,7 @@ x 是形式参数，y 是局部变量，z 是自由变量。
 
 methods() 得到当前对某个类对象可用的泛型函数列表：
 
-```{r}
+```{bash}
 methods(class="data.frame")
 ```
 
@@ -682,14 +682,14 @@ methods(class="data.frame")
 
 一个完整的列表同样可以通过函数methods():
 
-```{r}
+```{bash}
 methods(plot)
 ```
 
 ### 17) R中的统计模型
 线性模型,对于常规的多重模型拟合，最基本的函数是lm()。
 
-```{r}
+```{bash}
 fm2 <- lm(y ~ x1 + x2, data = production)
 ```
 
@@ -698,7 +698,7 @@ fm2 <- lm(y ~ x1 + x2, data = production)
 #### 提取模型信息的泛型函数
 lm() 的返回值是一个模型拟合结果对象；技术上就是属于类"lm" 的一个结果列表。关于拟合模型的信息可以用适合对象类"lm" 的泛型函数显示，提取，图示等等。
 
-```{r}
+```{bash}
 add1 coef effects kappa predict residuals alias 
 deviance family labels print step anova drop1 
 formula plot proj summary
@@ -736,7 +736,7 @@ plot(),这是一个泛型函数：产生的图形依赖于第一个参数的类�
 #### 数学标注
 在某些情况下，在一个图上加上数学符号和公式是非常有用的。在R 里面，这可以通过函数expression 实现，
 
-```{r}
+```{bash}
 text(x, y, expression(paste(bgroup("(", atop(n, x), ")"), p^x, q^{n-x})))
 ```
 
@@ -785,7 +785,7 @@ plyr是一个数据处理的包，可以把大的数据集通过一些条件拆�
 
 举例：击球得分：RBI(Run batted in)
 
-```{r}
+```{bash}
 install.packages("plyr")
 library(plyr)
 ?baseball
@@ -799,7 +799,7 @@ plot(mean_rbi ~ year, type = "l", data = rbi)
 ### 2). stringr (字符串处理)
 stringr是一个字符串处理的包，可以方便地进行各种字符串的操作。
 
-```{r}
+```{bash}
 install.packages("stringr")
 library(stringr)
 
@@ -816,7 +816,7 @@ str_replace_all(fruits, c("a", "e", "i"), "-")
 ### 3). ggplot2 (可视化)
 ggplot2专业级的可视化绘图包
 
-```{r}
+```{bash}
 install.packages("ggplot2")
 library(ggplot2)
 g<-ggplot(mtcars, aes(x=factor(cyl), fill=factor(vs)))

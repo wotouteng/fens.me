@@ -270,7 +270,7 @@ Thrift是需要本地编译的，官方没有提供二进制安装包，首先�
 
 rhbase的相关函数：
 
-```{r}
+```{bash}
 hb.compact.table      hb.describe.table     hb.insert             hb.regions.table
 hb.defaults           hb.get                hb.insert.data.frame  hb.scan
 hb.delete             hb.get.data.frame     hb.list.tables        hb.scan.ex
@@ -279,7 +279,7 @@ hb.delete.table       hb.init               hb.new.table          hb.set.table.m
 
 hbase和rhbase的基本操作对比：
 
-```{r}
+```{bash}
 建表
 HBASE:     create 'student_shell','info'
 RHBASE:    hb.new.table("student_rhbase","info")
@@ -339,7 +339,7 @@ Hbase Shell
 
 rhbase script
 
-```{r}
+```{bash}
 ~ R
 > library(rhbase)
 > hb.init()
