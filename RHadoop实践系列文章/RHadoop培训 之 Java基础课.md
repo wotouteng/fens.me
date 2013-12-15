@@ -12,7 +12,7 @@ RHadoop实践是一套系列文章，主要包括[”Hadoop环境搭建”](http
 + blog: http://blog.fens.me
 + email: bsspirit@gmail.com
 
-#### 转载请注明出处：http://blog.fens.me/rhadoop-linux-basic/
+#### 转载请注明出处：http://blog.fens.me/rhadoop-java-basic/
 
 ![RHadoop培训 之 Java基础课](http://blog.fens.me/wp-content/uploads/2013/07/java-title.jpg)
 
@@ -934,33 +934,3 @@ http://maven.apache.org
 + http://baike.baidu.com/
 
 #### 转载请注明出处：http://blog.fens.me/rhadoop-java-basic/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
