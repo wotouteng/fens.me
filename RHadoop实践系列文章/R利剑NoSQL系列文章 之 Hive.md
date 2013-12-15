@@ -3,19 +3,19 @@ R利剑NoSQL系列文章 之 Hive
 
 [R利剑NoSQL系列文章](http://blog.fens.me/series-r-nosql/)，主要介绍通过R语言连接使用nosql数据库。涉及的NoSQL产品，包括[Redis](http://blog.fens.me/nosql-r-redis/),[MongoDB](http://blog.fens.me/nosql-r-mongodb/), [HBase](http://blog.fens.me/nosql-r-hbase), [Hive](http://blog.fens.me/nosql-r-hive/), [Cassandra](http://blog.fens.me/nosql-r-cassandra/), [Neo4j](http://blog.fens.me/nosql-r-neo4j/)。希望通过我的介绍让广大的R语言爱好者，有更多的开发选择，做出更多地激动人心的应用。
 
-####关于作者：
+
+#### 关于作者
 
 + 张丹(Conan), 程序员Java,R,PHP,Javascript
 + weibo：@Conan_Z
 + blog: http://blog.fens.me
 + email: bsspirit@gmail.com
 
-####转载请注明：  
-http://blog.fens.me/nosql-r-hive/
+####转载请注明：http://blog.fens.me/nosql-r-hive/
 
-![](http://blog.fens.me/wp-content/uploads/2013/07/rhive.png)
+![R利剑NoSQL系列文章 之 Hive](http://blog.fens.me/wp-content/uploads/2013/07/rhive.png)
 
-####第四篇 R利剑Hive，分为5个章节。
+## 第四篇 R利剑Hive，分为5个章节。
 
 1. Hive介绍
 2. Hive安装
@@ -23,7 +23,7 @@ http://blog.fens.me/nosql-r-hive/
 4. RHive函数库
 5. RHive基本使用操作
 
-##1. Hive介绍
+## 1. Hive介绍
 
 Hive是建立在Hadoop上的数据仓库基础构架。它提供了一系列的工具，可以用来进行数据提取转化加载（ETL），这是一种可以存储、查询和分析存储在 Hadoop 中的大规模数据的机制。Hive 定义了简单的类 SQL 查询语言，称为 HQL，它允许熟悉 SQL 的用户查询数据。同时，这个语言也允许熟悉 MapReduce 开发者的开发自定义的 mapper 和 reducer 来处理内建的 mapper 和 reducer 无法完成的复杂的分析工作。
 
@@ -38,15 +38,15 @@ hive与关系数据库的区别：
 + 应用场景不同：hive是OLAP数据仓库系统提供海量数据查询的，实时性很差;关系数据库是OLTP事务系统，为实时查询业务服务
 + 扩展性不同：hive基于hadoop很容易通过分布式增加存储能力和计算能力，关系数据库水平扩展很难，要不断增加单机的性能
 
-##2. Hive安装
+## 2. Hive安装
 
 Hive是基于Hadoop开发的数据仓库产品，所以首先我们要先有Hadoop的环境。
 
 ![](http://blog.fens.me/wp-content/uploads/2013/07/rhive.jpg)
 
-###Hadoop安装，请参考：[Hadoop环境搭建](http://blog.fens.me/rhadoop-hadoop/), [创建Hadoop母体虚拟机](http://blog.fens.me/hadoop-base-kvm/)
+#### Hadoop安装，请参考：[Hadoop环境搭建](http://blog.fens.me/rhadoop-hadoop/), [创建Hadoop母体虚拟机](http://blog.fens.me/hadoop-base-kvm/)
 
-###Hive的安装，请参考：[Hive安装及使用攻略](http://blog.fens.me/hadoop-hive-intro/)
+#### Hive的安装，请参考：[Hive安装及使用攻略](http://blog.fens.me/hadoop-hive-intro/)
 
 Hadoop-1.0.3的下载地址  
 http://archive.apache.org/dist/hadoop/core/hadoop-1.0.3/
@@ -54,7 +54,7 @@ http://archive.apache.org/dist/hadoop/core/hadoop-1.0.3/
 Hive-0.9.0的下载地址  
 http://archive.apache.org/dist/hive/hive-0.9.0/
 
-###Hive安装好后  
+### Hive安装好后  
 启动hiveserver的服务
 
 ```{bash}
@@ -92,7 +92,7 @@ hive> select * from o_account;
 Time taken: 0.469 seconds
 ```
 
-##3. RHive安装
+## 3. RHive安装
 
 请提前配置好JAVA的环境：
 
@@ -124,7 +124,7 @@ install.packages("rJava")
 
 安装RHive
 
-```{bash}
+```{r}
 install.packages("RHive")
 
 library(RHive)
@@ -135,9 +135,9 @@ HIVE_HOME=/home/conan/hadoop/hive-0.9.0
 call rhive.init() because HIVE_HOME is set.
 ```
 
-##4. RHive函数库
+## 4. RHive函数库
 
-```{bash}
+```{r}
 rhive.aggregate        rhive.connect          rhive.hdfs.exists      rhive.mapapply
 rhive.assign           rhive.desc.table       rhive.hdfs.get         rhive.mrapply
 rhive.basic.by         rhive.drop.table       rhive.hdfs.info        rhive.napply
@@ -155,9 +155,9 @@ rhive.block.sample     rhive.hdfs.connect     rhive.load.table
 rhive.close            rhive.hdfs.du          rhive.load.table2
 ```
 
-###Hive和RHive的基本操作对比：
+### Hive和RHive的基本操作对比：
 
-```{bash}
+```{r}
 #连接到hive
 Hive:  hive shell
 RHive: rhive.connect("192.168.1.210")
@@ -187,9 +187,9 @@ Hive:  quit;
 RHive: rhive.close()
 ```
 
-##5. RHive基本使用操作
+## 5. RHive基本使用操作
 
-```{bash}
+```{r}
 #初始化
 rhive.init()
 
@@ -228,9 +228,8 @@ rhive.query("select * from o_account");
 #关闭连接
 rhive.close()
 [1] TRUE
-创建临时表
 
-
+#创建临时表
 rhive.block.sample('o_account', subset="id<5")
 [1] "rhive_sblk_1372238856"
 
@@ -253,9 +252,8 @@ rhive.hdfs.cat('/user/hive/warehouse/rhive_sblk_1372238856/000000_0')
 2dedac@163.com2013-04-22 12:21:39
 3qq8fed@163.com2013-04-22 12:21:39
 4qw1@163.com2013-04-22 12:21:39
-按范围分割字段数据
 
-
+#按范围分割字段数据
 rhive.basic.cut('o_account','id',breaks='0:100:3')
 [1] "rhive_result_20130626173626"
 attr(,"result:size")
@@ -274,9 +272,11 @@ rhive.query("select * from rhive_result_20130626173626");
 9    adeg@sohu.com 2013-04-23 09:21:24  (6,9]
 10 ade121@sohu.com 2013-04-23 09:21:24 (9,12]
 11  addde@sohu.com 2013-04-23 09:21:24 (9,12]
+```
+
 Hive操作HDFS
 
-
+```{r}
 #查看hdfs文件目录
 rhive.hdfs.ls()
   permission owner      group length      modify-time   file
@@ -293,28 +293,5 @@ rhive.hdfs.cat('/user/hive/warehouse/o_account/part-m-00000')
 3qq8fed@163.com2013-04-22 12:21:39
 ```
 
-####转载请注明：
-http://blog.fens.me/nosql-r-hive/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+####转载请注明：http://blog.fens.me/nosql-r-hive/
 
