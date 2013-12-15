@@ -7,12 +7,12 @@ RHadoop实践系列文章
 
 RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”RHadoop安装与使用”，”R实现MapReduce的算法案 例”，”HBase和rhbase的安装与使用”。对于单独的R语言爱好者，Java爱好者，或者Hadoop爱好者来说，同时具备三种语言知识并不容 易。此文虽为入门文章，但R,Java,Hadoop基础知识还是需要大家提前掌握。
 
-#R语言和Hadoop
+## R语言和Hadoop
 
 + [R语言为Hadoop注入统计血脉](http://blog.fens.me/r-hadoop-intro/)
 + [用R解析Mahout用户推荐协同过滤算法(UserCF)](http://blog.fens.me/r-mahout-usercf/)
 
-#RHadoop实践系列文章
+## RHadoop实践系列文章
 
 + [RHadoop实践系列之一 Hadoop环境搭建](http://blog.fens.me/rhadoop-hadoop/)
 + [RHadoop实践系列之二 RHadoop安装与使用](http://blog.fens.me/rhadoop-rhadoop/)
@@ -21,18 +21,18 @@ RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”R
 + [RHadoop实验 – 统计邮箱出现次数](http://blog.fens.me/rhadoop-demo-email/)
 + [解决RHadoop错误：PipeMapRed.waitOutputThreads(): subprocess failed with code 1](http://blog.fens.me/rhadoop-rmr2-pipemapred/)
 
-#RHadoop活动
+## RHadoop活动
 
 + [COS沙龙第九期:RHadoop分享会来袭](http://blog.fens.me/cos-beijing-meeting-20130623/)
 + [ChinaHadoop大会 2103: R语言为Hadoop注入统计血脉](http://blog.fens.me/hadoop-china-rhadoop-2013)
 
-#RHadoop培训
+## RHadoop培训
 
 + [RHadoop培训 之 Linux基础课](http://blog.fens.me/rhadoop-linux-basic/)
 + [RHadoop培训 之 Java基础课](http://blog.fens.me/rhadoop-java-basic/)
 + [RHadoop培训 之 R基础课](http://blog.fens.me/rhadoop-r-basic/)
 
-#RHive实践
+## RHive实践
 
 + [R利剑NoSQL系列文章 之 Hive](http://blog.fens.me/nosql-r-hive/)
 + [用RHive从历史数据中提取逆回购信息](http://blog.fens.me/finance-rhive-repurchase/)
