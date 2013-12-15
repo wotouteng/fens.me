@@ -1,37 +1,35 @@
 RHadoop实践系列之四 rhbase安装与使用
 =============
 
-> Author：张丹(Conan)  
-  Date: 2013-04-07  
-  Weibo: @Conan_Z  
-  Email: bsspirit@gmail.com  
-  Blog: http://www.fens.me/blog
+[RHadoop实践系列文章](http://blog.fens.me/series-rhadoop/)，包含了R语言与Hadoop结合进行海量数据分析。Hadoop主要用来存储海量数据，R语言完成MapReduce算法，用来替代Java的MapReduce实现。有了RHadoop可以让广大的R语言爱好者，有更强大的工具处理大数据。1G, 10G, 100G, TB,PB 由于大数据所带来的单机性能问题，可能会一去联复返了。
 
-> APPs:  
-  @晒粉丝 http://www.fens.me  
-  @每日中国天气 http://apps.weibo.com/chinaweatherapp
+RHadoop实践是一套系列文章，主要包括[”Hadoop环境搭建”](http://blog.fens.me/rhadoop-hadoop/)，[”RHadoop安装与使用”](http://blog.fens.me/rhadoop-rhadoop/)，[”R实现MapReduce的协同过滤算法”](http://blog.fens.me/rhadoop-mapreduce-rmr/)，[”HBase和rhbase的安装与使用”](http://blog.fens.me/rhadoop-hbase-rhase/)。对于单独的R语言爱好者，Java爱好者，或者Hadoop爱好者来说，同时具备三种语言知识并不容 易。此文虽为入门文章，但R,Java,Hadoop基础知识还是需要大家提前掌握。
 
-##RHadoop实践系列文章
+#### 关于作者：
 
-RHadoop实践系列文章，包含了R语言与Hadoop结合进行海量数据分析。Hadoop主要用来存储海量数据，R语言完成MapReduce算法，用来替代Java的MapReduce实现。有了RHadoop可以让广大的R语言爱好者，有更强大的工具处理大数据。1G, 10G, 100G, TB,PB 由于大数据所带来的单机性能问题，可能会一去联复返了。
++ Author：张丹(Conan)  
++ Date: 2013-04-07  
++ Weibo: @Conan_Z  
++ Email: bsspirit@gmail.com  
++ Blog: http://blog.fens.me
 
-RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”RHadoop安装与使用”，”R实现MapReduce的算法案例”，”HBase和rhbase的安装与使用”。对于单独的R语言爱好者，Java爱好者，或者Hadoop爱好者来说，同时具备三种语言知识并不容易。此文虽为入门文章，但R,Java,Hadoop基础知识还是需要大家提前掌握。
+#### 转载请注明出处：http://blog.fens.me/rhadoop-hbase-rhase/
 
-##第四篇 HBase和rhbase的安装与使用，分为3个章节。
+## 第四篇 HBase和rhbase的安装与使用，分为3个章节。
 
-```{bash}
 1. 环境准备及HBase安装
 2. rhbase安装
 3. rhbase程序用例
-```
 
-每一章节，都会分为”文字说明部分”和”代码部分”，保持文字说明与代码的连贯性。
+> 每一章节，都会分为"文字说明部分"和"代码部分"，保持文字说明与代码的连贯性。
 
-注：Hadoop环境及RHadoop的环境，请查看同系列前二篇文章，此文将不再介绍。
+> 注：Hadoop环境及RHadoop的环境，请查看同系列前二篇文章，此文将不再介绍。
++ [RHadoop实践系列文章之一: Hadoop环境搭建](http://blog.fens.me/rhadoop-hadoop/)
++ [RHadoop实践系列文章之二：RHadoop安装与使用](http://blog.fens.me/rhadoop-rhadoop/) 
 
-###1. 环境准备及HBase安装
+## 1. 环境准备及HBase安装
 
-文字说明部分：
+#### 文字说明部分：
 
 首先环境准备，这里我选择了Linux Ubuntu操作系统12.04的64位版本，大家可以根据自己的使用习惯选择顺手的Linux。
 
@@ -51,18 +49,18 @@ export HBASE_MANAGES_ZK=true
 
 配置完成，启动HBase服务。
 
-####代码部分：
+#### 代码部分：
 
-hbase安装
+**hbase安装**
 
-1) 下载安装hbase
+### 1) 下载安装hbase
 
 ```{bash}
 ~ http://www.fayea.com/apache-mirror/hbase/hbase-0.94.2/hbase-0.94.2.tar.gz
 ~ tar xvf hbase-0.94.2.tar.gz
 ```
 
-2) 修改配置文件
+### 2) 修改配置文件
 
 ```{bash}
 ~ cd hbase-0.94.2/
@@ -109,7 +107,7 @@ hbase安装
     </configuration>
 ```
 
-3) 复制hadoop环境的配置文件和类库
+### 3) 复制hadoop环境的配置文件和类库
 
 ```{bash}
   ~ cp ~/hadoop-1.0.3/conf/hdfs-site.xml ~/hbase-0.94.2/conf
@@ -118,14 +116,14 @@ hbase安装
   ~ cp ~/hadoop-1.0.3/lib/commons-collections-3.2.1.jar ~/hbase-0.94.2/lib
 ```
 
-4) 启动hadoop和hbase
+### 4) 启动hadoop和hbase
 
 ```{bash}
   ~/hadoop-1.0.3/bin/start-all.sh
   ~/hbase-0.94.2/bin/start-hbase.sh 
 ```
 
-5) 查看hbase进行
+### 5) 查看hbase进行
 
 ```{bash}
 ~ jps
@@ -141,7 +139,7 @@ hbase安装
     31216 NameNode
 ```
 
-6) 打开hbase命令行客户端
+### 6) 打开hbase命令行客户端
 
 ```{bash}
 ~/hbase-0.94.2/bin/hbase shell
@@ -158,9 +156,9 @@ hbase(main):001:0> list
 
 HBase安装完成。
 
-###2. rhbase安装
+## 2. rhbase安装
 
-文字说明部分：
+#### 文字说明部分：
 
 安装完成HBase后，我们还需要安装Thrift，因为rhbase是通过Thrift调用HBase的。
 
@@ -173,9 +171,9 @@ Thrift是需要本地编译的，官方没有提供二进制安装包，首先�
 
 最后，安装rhbase。
 
-####代码部分：
+#### 代码部分：
 
-1.下载thrift
+### 1).下载thrift
 
 ```{bash}
 ~ wget http://archive.apache.org/dist/thrift/0.8.0/thrift-0.8.0.tar.gz
@@ -183,19 +181,19 @@ Thrift是需要本地编译的，官方没有提供二进制安装包，首先�
 ~ cd thrift-0.8.0/
 ```
 
-2.下载PHP支持类库(可选)
+### 2).下载PHP支持类库(可选)
 
 ```{bash}
 ~ sudo apt-get install php-cli
 ```
 
-3.下载C++支持类库(可选)
+### 3).下载C++支持类库(可选)
 
 ```{bash}
 ~ sudo apt-get install libboost-dev libboost-test-dev libboost-program-options-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
 ```
 
-4.生成编译的配置参数
+### 4).生成编译的配置参数
 
 ```{bash}
 ~ ./configure
@@ -224,14 +222,14 @@ Thrift是需要本地编译的，官方没有提供二进制安装包，首先�
   Using php-config ............. : /usr/bin/php-config
 ```
 
-5.编译和安装
+### 5).编译和安装
 
 ```{bash}
 ~ make
 ~ make install
 ```
 
-6.查看thrift版本
+### 6).查看thrift版本
 
 ```{bash}
 ~ thrift -version
@@ -239,7 +237,7 @@ Thrift是需要本地编译的，官方没有提供二进制安装包，首先�
   Thrift version 0.8.0
 ```
 
-7.启动HBase的Thrift Server
+### 7).启动HBase的Thrift Server
 
 ```{bash}
   ~ /hbase-0.94.2/bin/hbase-daemon.sh start thrift
@@ -258,7 +256,7 @@ Thrift是需要本地编译的，官方没有提供二进制安装包，首先�
       31216 NameNode
 ```
 
-8.安装rhbase
+### 8).安装rhbase
 
 ```{bash}
   ~ R CMD INSTALL rhbase_1.1.1.tar.gz
@@ -266,13 +264,13 @@ Thrift是需要本地编译的，官方没有提供二进制安装包，首先�
 
 很顺利的安装完成。
 
-###3. rhbase程序用例
+## 3. rhbase程序用例
 
-文字说明部分：
+#### 文字说明部分：
 
 rhbase的相关函数：
 
-```{bash}
+```{r}
 hb.compact.table      hb.describe.table     hb.insert             hb.regions.table
 hb.defaults           hb.get                hb.insert.data.frame  hb.scan
 hb.delete             hb.get.data.frame     hb.list.tables        hb.scan.ex
@@ -281,7 +279,7 @@ hb.delete.table       hb.init               hb.new.table          hb.set.table.m
 
 hbase和rhbase的基本操作对比：
 
-```{bash}
+```{r}
 建表
 HBASE:     create 'student_shell','info'
 RHBASE:    hb.new.table("student_rhbase","info")
@@ -308,7 +306,7 @@ HBASE:     drop 'student_shell'
 RHBASE:    hb.delete.table('student_rhbase')
 ```
 
-####代码部分：
+#### 代码部分：
 
 Hbase Shell
 
@@ -341,7 +339,7 @@ Hbase Shell
 
 rhbase script
 
-```{bash}
+```{r}
 ~ R
 > library(rhbase)
 > hb.init()
@@ -393,22 +391,9 @@ rhbase script
 
 RHadoop实践系列文章的第四篇完成！希望这个四篇文章对大家有所帮助。
 稍后我可能还会写一些，关于rmr算法实践，rhadoop架构方面和hive的使用的相关文章。
+
 欢迎大家多提问题，多交流。
 
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### 转载请注明出处：http://blog.fens.me/rhadoop-hbase-rhase/
 
