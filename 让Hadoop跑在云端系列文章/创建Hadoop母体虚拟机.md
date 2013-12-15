@@ -547,9 +547,7 @@ hello world!!
 
 Hadoop母体虚拟机已创建完毕，下面我们就可以以克隆的方式创建Hadoop虚拟节点了。
 
-####转载请注明出处：
-
-http://blog.fens.me/hadoop-base-kvm/
+####转载请注明出处：http://blog.fens.me/hadoop-base-kvm/
 
 
 
