@@ -135,6 +135,7 @@ d. R语言同样提供了Mahout支持的约大多数算法(除专有算法)，�
 一旦市场有需求，自然会有商家填补这个空白。
 
 ### 1). RHadoop
+
 RHadoop是一款Hadoop和R语言的结合的产品，由RevolutionAnalytics公司开发，并将代码开源到github社区上面。RHadoop包含三个R包 (rmr，rhdfs，rhbase)，分别是对应Hadoop系统架构中的，MapReduce, HDFS, HBase 三个部分。
 
 参考文章:
@@ -150,6 +151,7 @@ RHive是一款通过R语言直接访问Hive的工具包，是由NexR一个韩国
 + [用RHive从历史数据中提取逆回购信息](http://blog.fens.me/finance-rhive-repurchase/)
 
 ### 3). 重写Mahout
+
 用R语言重写Mahout的实现也是一种结合的思路，我也做过相关的尝试。
 
 参考文章:
