@@ -5,30 +5,29 @@ ChinaHadoop大会 2103: R语言为Hadoop注入统计血脉
 
 RHadoop实践是一套系列文章，主要包括[”Hadoop环境搭建”](http://blog.fens.me/rhadoop-hadoop/)，[”RHadoop安装与使用”](http://blog.fens.me/rhadoop-rhadoop/)，[”R实现MapReduce的协同过滤算法”](http://blog.fens.me/rhadoop-mapreduce-rmr/)，[”HBase和rhbase的安装与使用”](http://blog.fens.me/rhadoop-hbase-rhase/)。对于单独的R语言爱好者，Java爱好者，或者Hadoop爱好者来说，同时具备三种语言知识并不容 易。此文虽为入门文章，但R,Java,Hadoop基础知识还是需要大家提前掌握。
 
-####关于作者
+#### 关于作者
 
 + 张丹(Conan), 程序员Java,R,PHP,Javascript
 + weibo：@Conan_Z
 + blog: http://blog.fens.me
 + email: bsspirit@gmail.com
 
-####转载请注明出处：  
-http://blog.fens.me/hadoop-china-rhadoop-2013/
+#### 转载请注明出处：http://blog.fens.me/hadoop-china-rhadoop-2013/
 
-![统计血脉](http://blog.fens.me/wp-content/uploads/2013/11/rhadoop-chinahadoop.png)
+![ChinaHadoop大会 2103: R语言为Hadoop注入统计血脉](http://blog.fens.me/wp-content/uploads/2013/11/rhadoop-chinahadoop.png)
 
-####前言
+#### 前言
 
 今天有幸在2013年ChinaHadoop大会发言，为R语言推广做出一点点贡献，自己感觉非常的激动。自学习R语言以来，跨学科的思维模式，每天都在扩充自己的视野！“唯有跳出IT的圈子，才能体会IT正在改变着世界”。
 
 以计算机技术和统计为工具，再结合行业知识，必将成为未来“数据掘金”的原动力！抓住时代的机会，是80后崛起的时候了！
 
-####目录
+#### 目录
 
 1. 主题内容介绍  
 2. 活动照片
 
-###1. 主题内容介绍
+## 1. 主题内容介绍
 
 ChinaHadoop的大会主页:http://www.chinahadoop.com/
 
@@ -43,11 +42,11 @@ R语言为Hadoop注入统计血脉：[PPT下载](http://doc.fens.me/chinaHadoop-
 7). ItemCF算法:Mahout 实现  
 8). 推荐结果，数据可视化
 
-####1). 主题：R语言为Hadoop注入统计血脉  
+#### 1). 主题：R语言为Hadoop注入统计血脉  
 
 主要内容：[R语言为Hadoop注入统计血脉](http://blog.fens.me/r-hadoop-intro/)
 
-####2). RHadoop基础程序
+#### 2). RHadoop基础程序
 
 主要内容：[RHadoop实践系列之二：RHadoop安装与使用](http://blog.fens.me/rhadoop-rhadoop/)
 
@@ -91,12 +90,12 @@ output<-wordcount(input)
 from.dfs(output)
 ```
 
-####3). 分步式协同过滤ItemCF算法介绍
+#### 3). 分步式协同过滤ItemCF算法介绍
 主要内容：[RHadoop实践系列之三 R实现MapReduce的协同过滤算法](http://blog.fens.me/rhadoop-mapreduce-rmr/)
 
 ![分布式程序](http://blog.fens.me/wp-content/uploads/2013/10/aglorithm_2.jpg)
 
-####4). ItemCF算法:R本地程序实现
+#### 4). ItemCF算法:R本地程序实现
 
 主要内容：[RHadoop实践系列之三 R实现MapReduce的协同过滤算法](http://blog.fens.me/rhadoop-mapreduce-rmr/)
 
@@ -193,7 +192,7 @@ for(i in 1:length(users)){
 recommendation
 ```
 
-####5). ItemCF算法:RHadoop实现
+#### 5). ItemCF算法:RHadoop实现
 
 主要内容：[RHadoop实践系列之三 R实现MapReduce的协同过滤算法](http://blog.fens.me/rhadoop-mapreduce-rmr/)
 
@@ -300,19 +299,19 @@ result.mr<-mapreduce(
 from.dfs(result.mr)
 ```
 
-####6). ItemCF算法:Java Hadoop MapReduce实现
+#### 6). ItemCF算法:Java Hadoop MapReduce实现
 
 主要内容：[用Hadoop构建电影推荐系统](http://blog.fens.me/hadoop-mapreduce-recommend/)
 
 源代码:https://github.com/bsspirit/maven_hadoop_template/releases/tag/recommend
 
-####7). ItemCF算法:Mahout 实现
+#### 7). ItemCF算法:Mahout 实现
 
 主要内容：[Mahout分步式程序开发 基于物品的协同过滤ItemCF](http://blog.fens.me/hadoop-mahout-mapreduce-itemcf/)
 
 源代码: https://github.com/bsspirit/maven_mahout_template/tree/mahout-0.8
 
-####8). 推荐结果，数据可视化
+#### 8). 推荐结果，数据可视化
 
 数据集：small.csv
 
@@ -396,7 +395,7 @@ drawGraph(recommendation)
 
 ![分散图2](http://blog.fens.me/wp-content/uploads/2013/11/recommand_graph.png)
 
-###2. 活动照片
+## 2. 活动照片
 
 ![活动照片1](http://blog.fens.me/wp-content/uploads/2013/11/chinahadoop-1.jpg)
 
@@ -405,13 +404,4 @@ drawGraph(recommendation)
 ![活动照片3](http://blog.fens.me/wp-content/uploads/2013/11/chinaHadoop2013.jpg)
 
 
-####转载请注明出处：  
-http://blog.fens.me/hadoop-china-rhadoop-2013/
-
-
-
-
-
-
-
-
+#### 转载请注明出处： http://blog.fens.me/hadoop-china-rhadoop-2013/
