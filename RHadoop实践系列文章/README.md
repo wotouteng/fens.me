@@ -14,8 +14,8 @@ RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”R
 
 #RHadoop实践系列文章
 
-+ [RHadoop实践系列之一:Hadoop环境搭建](http://blog.fens.me/rhadoop-hadoop/)
-+ [RHadoop实践系列之二：RHadoop安装与使用](http://blog.fens.me/rhadoop-rhadoop/)
++ [RHadoop实践系列之一 Hadoop环境搭建](http://blog.fens.me/rhadoop-hadoop/)
++ [RHadoop实践系列之二 RHadoop安装与使用](http://blog.fens.me/rhadoop-rhadoop/)
 + [RHadoop实践系列之三 R实现MapReduce的协同过滤算法](http://blog.fens.me/rhadoop-mapreduce-rmr/)
 + [RHadoop实践系列之四 rhbase安装与使用](http://blog.fens.me/rhadoop-hbase-rhase/)
 + [RHadoop实验 – 统计邮箱出现次数](http://blog.fens.me/rhadoop-demo-email/)
@@ -36,14 +36,4 @@ RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”R
 
 + [R利剑NoSQL系列文章 之 Hive](http://blog.fens.me/nosql-r-hive/)
 + [用RHive从历史数据中提取逆回购信息](http://blog.fens.me/finance-rhive-repurchase/)
-
-
-
-
-
-
-
-
-
-
 
