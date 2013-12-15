@@ -9,13 +9,13 @@ Hadoop家族系列文章
 
 作为IT界的开发人员，我们也要跟上节奏，抓住机遇，跟着Hadoop一起雄起！
 
-#学习路线图
+## 学习路线图
 
 + [Hadoop家族学习路线图 开篇必读](http://blog.fens.me/hadoop-family-roadmap/)
 + [Hive学习路线图](http://blog.fens.me/hadoop-hive-roadmap/)
 + [Mahout学习路线图](http://blog.fens.me/hadoop-mahout-roadmap/)
 
-#编程实践
+## 编程实践
 
 + [Hadoop历史版本安装](http://blog.fens.me/hadoop-history-source-install/)
 + [用Maven构建Hadoop项目](http://blog.fens.me/hadoop-maven-eclipse/)
@@ -26,7 +26,7 @@ Hadoop家族系列文章
 + [Mahout分步式程序开发 基于物品的协同过滤ItemCF](http://blog.fens.me/hadoop-mahout-mapreduce-itemcf/)
 + [Mahout分步式程序开发 聚类Kmeans](http://blog.fens.me/hadoop-mahout-kmeans/)
 
-#案例分析
+## 案例分析
 
 + [海量Web日志分析 用Hadoop提取KPI统计指标](http://blog.fens.me/hadoop-mapreduce-log-kpi/)
 + [用Hadoop构建电影推荐系统](http://blog.fens.me/hadoop-mapreduce-recommand/)
