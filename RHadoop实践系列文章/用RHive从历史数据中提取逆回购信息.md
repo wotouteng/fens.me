@@ -5,40 +5,39 @@
 
 金融是离钱最近的市场，也是变现的好渠道！今天就开始踏上“用IT技术玩金融”之旅！
 
-####关于作者：
+#### 关于作者
 
 + 张丹(Conan), 程序员Java,R,PHP,Javascript
 + weibo：@Conan_Z
 + blog: http://blog.fens.me
 + email: bsspirit@gmail.com
 
-####转载请注明出处：  
-http://blog.fens.me/finance-rhive-repurchase/
+#### 转载请注明出处：http://blog.fens.me/finance-rhive-repurchase/
 
-![](http://blog.fens.me/wp-content/uploads/2013/07/it-finance.png)
+![用RHive从历史数据中提取逆回购信息](http://blog.fens.me/wp-content/uploads/2013/07/it-finance.png)
 
-####前言
+#### 前言
 
 接触金融时间并不太长，对我来说第一个操作的业务，就是逆回购。逆回购对于大部分人来说，都是一个新鲜词，就算是炒股多年的玩家，可能也是在2013年6月份发生银行缺钱的事件之后才了解的。隔夜的银行间拆借利率达到了30%，简单来说银行缺钱了！各种机构 分分出售股票，债券，兑换成现金借给应银行。个人用户也都取出存款，通过逆回购，把钱借给银行。30%的利率，让所有人在那一周都为之兴奋，只有银行在惶恐。
 
-####目录
+#### 目录
 
 1. 逆回购简介
 2. 历史数据模型
 3. 通过用RHive提取数据
 4. 简单策略实现
 
-##1. 逆回购简介
+## 1. 逆回购简介
 
-###债券回购的含义
+### 债券回购的含义
 
 债券质押式回购简单地说就是交易双方以债券为质押品的一种短期资金借贷行为。其中债券持有人(正回购方)将债券质押而获得资金使用权，到约定的时间还本并支付一定的利息，从而“赎回”债券。而资金持有人(逆回购方)就是正回购方的交易对手。在实际交易中债券是质押给了第三方即中国结算公司，这样交易双方否更加安全、便捷。
 
-###可回购的债券
+### 可回购的债券
 
 所有的国债、绝大部分企业债、公司债和分离债的纯债都可用于债券回购交易。沪深交易所每周都会公布可回购债券的折算率，上面没有但可交易的品种就是不可回购的债券。折算率简单说，就是把债券质押时，交易所按债券面值给出的可质押的比率。
 
-###现在交易的回购品种
+### 现在交易的回购品种
 
 我们仅列出个人投资者经常参与的公司债(包括企业债等)回购品种。
 
@@ -46,11 +45,11 @@ http://blog.fens.me/finance-rhive-repurchase/
 
 以上逆回购定义摘自：http://finance.sina.com.cn/money/bond/20121016/180713385513.shtml
 
-##2. 历史数据模型
+## 2. 历史数据模型
 
 Hive中的表结构：
 
-```{bash}
+```{r}
 rhive.desc.table('t_reverse_repurchase')
     col_name data_type
 1  tradedate    string
@@ -70,11 +69,11 @@ rhive.desc.table('t_reverse_repurchase')
 + offerpx1：卖一
 + bidsize1：卖一交易量
 
-##3. 通过用RHive提取数据
+## 3. 通过用RHive提取数据
 
 登陆c1服务器，打开R的客户端。
 
-```{bash}
+```{r}
 
 #装载RHive
 library(RHive)
@@ -99,7 +98,7 @@ SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
 
 查看所有股票历史数据分片：测试数据从20130627–20130726。
 
-```{bash}
+```{r}
 > rhive.query("SHOW PARTITIONS t_hft_day");
             partition
 1  tradedate=20130627
@@ -125,14 +124,14 @@ SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
 
 分为提取”上交所一天逆回购”(204001)，和”深交所一天逆回购”(131810)，从7月22日至7月26日的一周数据。
 
-```{bash}
+```{r}
 > rhive.drop.table("t_reverse_repurchase")
 > rhive.query("CREATE TABLE t_reverse_repurchase AS SELECT tradedate,tradetime,securityid,bidpx1,bidsize1,offerpx1,offersize1 FROM t_hft_day where tradedate>=20130722 and securityid in (131810,204001)");
 ```
 
 查看数据结果集
 
-```{bash}
+```{r}
 > rhive.query("SELECT securityid,count(1) FROM t_reverse_repurchase group by securityid");
   securityid  X_c1
 1     131810 17061
@@ -141,7 +140,7 @@ SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
 
 加载到R的内存中。
 
-```{bash}
+```{r}
 > bidpx1<-rhive.query("SELECT securityid,concat(tradedate,tradetime) as tradetime,bidpx1 FROM t_reverse_repurchase"); #查看记录条数 > nrow(bidpx1)
 [1] 29502
 
@@ -160,7 +159,7 @@ SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
 
 一周数据的走势
 
-```{bash}
+```{r}
 library(ggplot2)
 g<-ggplot(data=bidpx1, aes(x=as.POSIXct(tradetime,format="%Y%m%d%H%M%S"), y=bidpx1))
 g<-g+geom_line(aes(group=securityid,colour=securityid))
@@ -172,7 +171,7 @@ ggsave(g,file="01.png",width=12,height=8)
 
 一天数据的走势
 
-```{bash}
+```{r}
 bidpx1<-rhive.query("SELECT securityid,concat(tradedate,tradetime) as tradetime,bidpx1 FROM t_reverse_repurchase WHERE tradedate=20130726");
 g<-ggplot(data=bidpx1, aes(x=as.POSIXct(tradetime,format="%Y%m%d%H%M%S"), y=bidpx1))
 g<-g+geom_line(aes(group=securityid,colour=securityid))
@@ -182,7 +181,7 @@ ggsave(g,file="02.png",width=12,height=8)
 
 ![](http://blog.fens.me/wp-content/uploads/2013/07/02.png)
 
-##4. 简单策略实现
+## 4. 简单策略实现
 
 通过简单的打印出两幅图片的两条曲线，我们可以看到131810一直在追随204001变化，并且大部情况都低于204001。  
 下面做一个简单的策略分析：通过204001变化，判断131810的卖点。
@@ -193,7 +192,7 @@ ggsave(g,file="02.png",width=12,height=8)
 
 提取131810,204001的数据，存储在t_reverse_repurchase表中
 
-```{bash}
+```{r}
 
 #登陆R
 library(RHive)
@@ -230,7 +229,7 @@ rhive.query("select count(1),tradedate from t_reverse_repurchase group by traded
 
 加载软件包
 
-```{bash}
+```{r}
 library(ggplot2)
 library(scales)
 library(plyr)
@@ -238,7 +237,7 @@ library(plyr)
 
 获得一天的数据并做ETL
 
-```{bash}
+```{r}
 
 #把一周的数据加载到内存
 bidpx1<-rhive.query(paste("SELECT securityid,tradedate,tradetime,bidpx1 FROM t_reverse_repurchase WHERE tradedate>=20130722"));
@@ -344,10 +343,8 @@ draw(d2,d3,d4,as.character(date),TRUE)
 
 [用IT技术玩金融系列文章](http://blog.fens.me/series-it-finance/)，第一篇就当是一个抛砖引玉的开始，后面的文章会更精彩。
 
- 
 
-####转载请注明出处：  
-http://blog.fens.me/finance-rhive-repurchase/
+#### 转载请注明出处：http://blog.fens.me/finance-rhive-repurchase/
 
 
 
