@@ -49,7 +49,7 @@
 
 Hive中的表结构：
 
-```{r}
+```{bash}
 rhive.desc.table('t_reverse_repurchase')
     col_name data_type
 1  tradedate    string
@@ -73,7 +73,7 @@ rhive.desc.table('t_reverse_repurchase')
 
 登陆c1服务器，打开R的客户端。
 
-```{r}
+```{bash}
 
 #装载RHive
 library(RHive)
@@ -98,7 +98,7 @@ SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
 
 查看所有股票历史数据分片：测试数据从20130627–20130726。
 
-```{r}
+```{bash}
 > rhive.query("SHOW PARTITIONS t_hft_day");
             partition
 1  tradedate=20130627
@@ -124,14 +124,14 @@ SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
 
 分为提取”上交所一天逆回购”(204001)，和”深交所一天逆回购”(131810)，从7月22日至7月26日的一周数据。
 
-```{r}
+```{bash}
 > rhive.drop.table("t_reverse_repurchase")
 > rhive.query("CREATE TABLE t_reverse_repurchase AS SELECT tradedate,tradetime,securityid,bidpx1,bidsize1,offerpx1,offersize1 FROM t_hft_day where tradedate>=20130722 and securityid in (131810,204001)");
 ```
 
 查看数据结果集
 
-```{r}
+```{bash}
 > rhive.query("SELECT securityid,count(1) FROM t_reverse_repurchase group by securityid");
   securityid  X_c1
 1     131810 17061
@@ -140,7 +140,7 @@ SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
 
 加载到R的内存中。
 
-```{r}
+```{bash}
 > bidpx1<-rhive.query("SELECT securityid,concat(tradedate,tradetime) as tradetime,bidpx1 FROM t_reverse_repurchase"); #查看记录条数 > nrow(bidpx1)
 [1] 29502
 
@@ -159,7 +159,7 @@ SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
 
 一周数据的走势
 
-```{r}
+```{bash}
 library(ggplot2)
 g<-ggplot(data=bidpx1, aes(x=as.POSIXct(tradetime,format="%Y%m%d%H%M%S"), y=bidpx1))
 g<-g+geom_line(aes(group=securityid,colour=securityid))
@@ -171,7 +171,7 @@ ggsave(g,file="01.png",width=12,height=8)
 
 一天数据的走势
 
-```{r}
+```{bash}
 bidpx1<-rhive.query("SELECT securityid,concat(tradedate,tradetime) as tradetime,bidpx1 FROM t_reverse_repurchase WHERE tradedate=20130726");
 g<-ggplot(data=bidpx1, aes(x=as.POSIXct(tradetime,format="%Y%m%d%H%M%S"), y=bidpx1))
 g<-g+geom_line(aes(group=securityid,colour=securityid))
@@ -192,7 +192,7 @@ ggsave(g,file="02.png",width=12,height=8)
 
 提取131810,204001的数据，存储在t_reverse_repurchase表中
 
-```{r}
+```{bash}
 
 #登陆R
 library(RHive)
@@ -229,7 +229,7 @@ rhive.query("select count(1),tradedate from t_reverse_repurchase group by traded
 
 加载软件包
 
-```{r}
+```{bash}
 library(ggplot2)
 library(scales)
 library(plyr)
@@ -237,7 +237,7 @@ library(plyr)
 
 获得一天的数据并做ETL
 
-```{r}
+```{bash}
 
 #把一周的数据加载到内存
 bidpx1<-rhive.query(paste("SELECT securityid,tradedate,tradetime,bidpx1 FROM t_reverse_repurchase WHERE tradedate>=20130722"));
