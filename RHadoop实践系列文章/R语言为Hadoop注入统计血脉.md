@@ -6,22 +6,22 @@ R语言为Hadoop注入统计血脉
 RHadoop实践是一套系列文章，主要包括["Hadoop环境搭建"](http://blog.fens.me/rhadoop-hadoop/)，[”RHadoop安装与使用”](http://blog.fens.me/rhadoop-rhadoop/)，[”R实现MapReduce的协同过滤算法”](http://blog.fens.me/rhadoop-mapreduce-rmr/)，[”HBase和rhbase的安装与使用”](http://blog.fens.me/rhadoop-hbase-rhase/)。对于单独的R语言爱好者，Java爱好者，或者Hadoop爱好者来说，同时具备三种语言知识并不容 易。此文虽为入门文章，但R,Java,Hadoop基础知识还是需要大家提前掌握。
 
 
-**关于作者**
+#### 关于作者
+
 + 张丹(Conan), 程序员Java,R,PHP,Javascript
 + weibo：@Conan_Z
-+ blog: [http://blog.fens.me](http://blog.fens.me/)
++ blog: http://blog.fens.me
 + email: bsspirit@gmail.com
 
-**转载请注明出处：**
-http://blog.fens.me/r-hadoop-intro/
+#### 转载请注明出处：http://blog.fens.me/r-hadoop-intro/
 
 ![R语言为Hadoop注入统计血脉](http://blog.fens.me/wp-content/uploads/2013/09/rhadoop-intro1.png)
 
-**前言**
+#### 前言
 
 写过几篇关于RHadoop的技术性文章，都是从统计的角度，介绍如何让R语言利用Hadoop处理大数据。今天决定反过来，从计算机开发人员的角度，介绍如何让Hadoop结合R语言，能做统计分析的事情。
 
-**目录**
+#### 目录
 
 1. R语言介绍
 2. Hadoop介绍
@@ -29,17 +29,17 @@ http://blog.fens.me/r-hadoop-intro/
 4. 如何让Hadoop结合R语言？
 5. R和Hadoop在实际中的案例
 
-#1. R语言介绍
+## 1. R语言介绍
 
-**起源**
+### 起源
 
 R语言，一种自由软件编程语言与操作环境，主要用于统计分析、绘图、数据挖掘。R本来是由来自新西兰奥克兰大学的Ross Ihaka和Robert Gentleman开发（也因此称为R），现在由“R开发核心团队”负责开发。R是基于S语言的一个GNU计划项目，所以也可以当作S语言的一种实现。R的语法是来自Scheme。
 
-**跨平台，许可证**
+### 跨平台，许可证
 
 R的源代码可自由下载使用，GNU通用公共许可证，可在多种平台下运行，包括UNIX,Linux,Windows和MacOS。R主要是以命令行操作为主，同时支持GUI的图形用户界面。
 
-**R的数字基因**
+### R的数字基因
 
 R内建多种统计学及数字分析功能。因为S的血缘，R比其他统计学或数学专用的编程语言有更强的物件导向功能。
 
@@ -47,22 +47,22 @@ R的另一强项是绘图功能，制图具有印刷的素质，也可加入数�
 
 虽然R主要用于统计分析或者开发统计相关的软体，但也有人用作矩阵计算。其分析速度可媲美GNU Octave甚至商业软件MATLAB。
 
-**代码库**
+### 代码库
 
 CRAN为Comprehensive R Archive Network的简称。它除了收藏了R的执行档下载版、源代码和说明文件，也收录了各种用户撰写的软件包。全球有超过一百个CRAN镜像站，上万个第三方的软件包。
 
-**R的行业应用**
+### R的行业应用
 
 统计分析，应用数学，计量经济，金融分析，财经分析，人文科学，数据挖掘，人工智能，生物信息学，生物制药，全球地理科学，数据可视化。
 
-**商业竞争对手**
+### 商业竞争对手
 
 + SAS:(Statistical Analysis System),是SAS公司推出的一款用于数据分析和和决策支持的大型集成式模块化软件系统。
 + SPSS:（Statistical Product and Service
 + Solutions）是IBM公司推出的一系列用于统计学分析运算、数据挖掘、预测分析和决策支持任务的软件产品及相关服务的总称。
 + Matlab:(MATrix LABoratory)，是MathWorks公司出品的一款商业数学软件。MATLAB是一种用于算法开发、数据可视化、数据分析以及数值计算的高级技术计算语言和交互式环境。
 
-#2. Hadoop介绍
+## 2. Hadoop介绍
 
 Hadoop对于计算机的人，都是耳熟能说的技术了。
 
@@ -84,7 +84,7 @@ Hadoop的家族成员：Hive, HBase, Zookeeper, Avro, Pig, Ambari, Sqoop, Mahout
 
 自2006年，Hadoop以MapReduce和HDFS独立发展开始，到今年2013年不过7年时间，Hadoop的家族已经孵化出多个Apache的顶级项目。特别是最近1-2年，发展速度越来越快，又融入了很多新技术(YARN, Hcatalog, Oozie, Cassandra)，都有点让我们都学不过来了。
 
-#3. 为什么要让Hadoop结合R语言？
+## 3. 为什么要让Hadoop结合R语言？
 
 前面两章，R语言介绍和Hadoop介绍，让我们体会到了，两种技术在各自领域的强大。很多开发人员在计算机的角度，都会提出下面2个问题。
 
@@ -93,15 +93,16 @@ Hadoop的家族成员：Hive, HBase, Zookeeper, Avro, Pig, Ambari, Sqoop, Mahout
 
 下面我尝试着做一个解答：
 
-**问题1: Hadoop的家族如此之强大，为什么还要结合R语言？**
+### 问题1: Hadoop的家族如此之强大，为什么还要结合R语言？
 
 a. Hadoop家族的强大之处，在于对大数据的处理，让原来的不可能（TB,PB数据量计算），成为了可能。
 
 b. R语言的强大之处，在于统计分析，在没有Hadoop之前，我们对于大数据的处理，要取样本，假设检验，做回归，长久以来R语言都是统计学家专属的工具。
 
-c. 从a和b两点，我们可以看出，hadoop重点是**全量数据分析**，而R语言重点是**样本数据分析**。 两种技术放在一起，刚好是最长补短！
+c. 从a和b两点，我们可以看出，hadoop重点是*全量数据分析*，而R语言重点是*样本数据分析*。 两种技术放在一起，刚好是最长补短！
 
-d. 模拟场景：**对1PB的新闻网站访问日志做分析，预测未来流量变化**
+
+#### d. 模拟场景：对1PB的新闻网站访问日志做分析，预测未来流量变化
 
 d1:用R语言，通过分析少量数据，对业务目标建回归建模，并定义指标。
 
@@ -115,7 +116,7 @@ d4:用Hadoop分步式算法，重写R语言的模型，部署上线
 
 所以让二者结合，是产界业的必然的导向，也是产界业和学术界的交集，同时也为交叉学科的人才提供了无限广阔的想象空间。
 
-**问题2: Mahout同样可以做数据挖掘和机器学习，和R语言的区别是什么？**
+### 问题2: Mahout同样可以做数据挖掘和机器学习，和R语言的区别是什么？
 
 a. Mahout是基于Hadoop的数据挖掘和机器学习的算法框架，Mahout的重点同样是解决大数据的计算的问题。
 
@@ -127,20 +128,20 @@ d. R语言同样提供了Mahout支持的约大多数算法(除专有算法)，�
 
 虽然，Mahout同样可以做数据挖掘和机器学习，但是和R语言的擅长领域并不重合。集百家之长，在适合的领域选择合适的技术，才能真正地“保质保量”做软件。
 
-#4. 如何让Hadoop结合R语言？
+## 4. 如何让Hadoop结合R语言？
 
 从上一节我们看到，Hadoop和R语言是可以互补的，但所介绍的场景都是Hadoop和R语言的分别处理各自的数据。
 
 一旦市场有需求，自然会有商家填补这个空白。
 
-**1). RHadoop**
+### 1). RHadoop
 RHadoop是一款Hadoop和R语言的结合的产品，由RevolutionAnalytics公司开发，并将代码开源到github社区上面。RHadoop包含三个R包 (rmr，rhdfs，rhbase)，分别是对应Hadoop系统架构中的，MapReduce, HDFS, HBase 三个部分。
 
 参考文章:
 + [RHadoop实践系列之二：RHadoop安装与使用](http://blog.fens.me/rhadoop-rhadoop/)
 + [RHadoop实践系列之四 rhbase安装与使用](http://blog.fens.me/rhadoop-hbase-rhase/)
 
-**2). RHive**
+### 2). RHive
 
 RHive是一款通过R语言直接访问Hive的工具包，是由NexR一个韩国公司研发的。
 
@@ -148,13 +149,13 @@ RHive是一款通过R语言直接访问Hive的工具包，是由NexR一个韩国
 + [R利剑NoSQL系列文章 之 Hive](http://blog.fens.me/nosql-r-hive/)
 + [用RHive从历史数据中提取逆回购信息](http://blog.fens.me/finance-rhive-repurchase/)
 
-**3). 重写Mahout**
+### 3). 重写Mahout
 用R语言重写Mahout的实现也是一种结合的思路，我也做过相关的尝试。
 
 参考文章:
 + [用R解析Mahout用户推荐协同过滤算法(UserCF)](http://blog.fens.me/r-mahout-usercf/)
 
-**4).Hadoop调用R**
+### 4).Hadoop调用R
 
 上面说的都是R如何调用Hadoop，当然我们也可以反相操作，打通JAVA和R的连接通道，让Hadoop调用R的函数。但是，这部分还没有商家做出成形的产品。
 
@@ -164,7 +165,7 @@ RHive是一款通过R语言直接访问Hive的工具包，是由NexR一个韩国
 + [Rserve与Java的跨平台通信](http://blog.fens.me/r-rserve-java/)
 + [解惑rJava R与Java的高速通道](http://blog.fens.me/r-rjava-java/)
 
-#5. R和Hadoop在实际中的案例
+## 5. R和Hadoop在实际中的案例
 
 R和Hadoop的结合，技术门槛还是有点高的。对于一个人来说，不仅要掌握Linux, Java, Hadoop, R的技术，还要具备 软件开发，算法，概率统计，线性代数，数据可视化，行业背景 的一些基本素质。
 
@@ -179,7 +180,7 @@ R和Hadoop的结合，技术门槛还是有点高的。对于一个人来说，�
 + [RHadoop实验 – 统计邮箱出现次数](http://blog.fens.me/rhadoop-demo-email/)
 + [用RHive从历史数据中提取逆回购信息](http://blog.fens.me/finance-rhive-repurchase/)
 
-**展位未来**
+## 展位未来
 
 对于R和Hadoop的结合，在近几年，肯定会生成爆发式的增长的。但由于跨学科会造成技术壁垒，人才会远远跟不上市场的需求。
 
@@ -187,69 +188,4 @@ R和Hadoop的结合，技术门槛还是有点高的。对于一个人来说，�
 
 加油！！
 
-**转载请注明出处：**
-http://blog.fens.me/r-hadoop-intro/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### 转载请注明出处：http://blog.fens.me/r-hadoop-intro/
