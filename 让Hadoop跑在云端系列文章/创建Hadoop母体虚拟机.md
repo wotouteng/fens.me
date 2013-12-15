@@ -15,7 +15,6 @@
 + email: bsspirit@gmail.com
 
 #### 转载请注明出处：
-
 http://blog.fens.me/hadoop-base-kvm/
 
 ![创建Hadoop母体虚拟机](http://blog.fens.me/wp-content/uploads/2013/07/clone-base.png)
