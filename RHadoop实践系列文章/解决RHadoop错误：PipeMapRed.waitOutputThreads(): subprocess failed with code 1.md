@@ -1,25 +1,21 @@
 解决RHadoop错误：PipeMapRed.waitOutputThreads(): subprocess failed with code 1
 ==================
 
-####RHadoop实践系列文章
+[RHadoop实践系列文章](http://blog.fens.me/series-rhadoop/)，包含了R语言与Hadoop结合进行海量数据分析。Hadoop主要用来存储海量数据，R语言完成MapReduce 算法，用来替代Java的MapReduce实现。有了RHadoop可以让广大的R语言爱好者，有更强大的工具处理大数据1G, 10G, 100G, TB, PB。 由于大数据所带来的单机性能问题，可能会一去不复返了。
 
-RHadoop实践系列文章，包含了R语言与Hadoop结合进行海量数据分析。Hadoop主要用来存储海量数据，R语言完成MapReduce 算法，用来替代Java的MapReduce实现。有了RHadoop可以让广大的R语言爱好者，有更强大的工具处理大数据1G, 10G, 100G, TB, PB。 由于大数据所带来的单机性能问题，可能会一去不复返了。
+RHadoop实践是一套系列文章，主要包括["Hadoop环境搭建"](http://blog.fens.me/rhadoop-hadoop/)，[”RHadoop安装与使用”](http://blog.fens.me/rhadoop-rhadoop/)，[”R实现MapReduce的协同过滤算法”](http://blog.fens.me/rhadoop-mapreduce-rmr/)，[”HBase和rhbase的安装与使用”](http://blog.fens.me/rhadoop-hbase-rhase/)。对于单独的R语言爱好者，Java爱好者，或者Hadoop爱好者来说，同时具备三种语言知识并不容 易。此文虽为入门文章，但R,Java,Hadoop基础知识还是需要大家提前掌握。
 
-RHadoop实践是一套系列文章，主要包括”Hadoop环境搭建”，”RHadoop安装与使用”，”R实现MapReduce的算法案 例”，”HBase和rhbase的安装与使用”。对于单独的R语言爱好者，Java爱好者，或者Hadoop爱好者来说，同时具备三种语言知识并不容 易。此文虽为入门文章，但R,Java,Hadoop基础知识还是需要大家提前掌握。
+#### 关于作者
++ 张丹(Conan), 程序员Java,R,PHP,Javascript
++ weibo：@Conan_Z
++ blog: http://blog.fens.me
++ email: bsspirit@gmail.com
 
-####关于作者
+#### 转载请注明出处：http://blog.fens.me/rhadoop-rmr2-pipemapred/
 
-张丹(Conan), 程序员Java,R,PHP,Javascript  
-weibo：@Conan_Z  
-blog: http://blog.fens.me  
-email: bsspirit@gmail.com
+![解决RHadoop错误：PipeMapRed.waitOutputThreads(): subprocess failed with code 1](http://blog.fens.me/wp-content/uploads/2013/06/rhadoop-pipemapred.jpg)
 
-####转载请注明出处：  
-http://blog.fens.me/rhadoop-rmr2-pipemapred/
-
-![RHadoop实践系列文章](http://blog.fens.me/wp-content/uploads/2013/06/rhadoop-pipemapred.jpg)
-
-####前言
+#### 前言
 
 一行错误难倒一片同学，今天在准备 统计之都沙龙 的时候，我也遇到相同的错误。就让我来解决一下，在使用rhadoop的rmr2中，经常会遇到的一个错误。
 
@@ -32,14 +28,14 @@ http://blog.fens.me/rhadoop-rmr2-pipemapred/
 > from.dfs("/tmp/RtmpWnzxl4/file5deb791fcbd5")
 ```
 
-####文章目录：
+#### 文章目录：
 
 1. rmr2运行错误日志
 2. 定位错误到hadoop日志
 3. 从hadoop入手找解决办法 — 失败
 4. 从rhadoop入手找解决办法 — 成功
  
-##1. rmr2运行错误日志
+## 1. rmr2运行错误日志
 
 R执行的错误日志如下面：
 
@@ -65,7 +61,7 @@ Error in mr(map = map, reduce = reduce, combine = combine, vectorized.reduce,  :
 
 我们光看上面的日志，根本发现不了hadoop的实际错误是什么！
 
-##2. 定位错误到hadoop日志
+## 2. 定位错误到hadoop日志
 
 接下来需要定位到实际错误的位置。为了方便查询日志，我们打开jobtracker的控制台：http://192.168.1.210:50030/jobtracker.jsp
 并找到刚才出现错误的, 日志中有提示的网页位置, Tracking URL: http://master:50030/jobdetails.jsp?jobid=job_201306231032_0001
@@ -93,7 +89,7 @@ org.apache.hadoop.mapred.Child.main(Child.java:249)
 
 ```
 
-##3. 从hadoop入手找解决办法 — 失败
+## 3. 从hadoop入手找解决办法 — 失败
 
 查看hadoop错误列表：code 1的错误
 
@@ -157,7 +153,7 @@ drwxr-xr-x   - conan supergroup          0 2013-04-24 19:28 /user
 
 重启hadoop，重启R程序，重新执行rmr2脚本。还是有错误，没有解决问题。
 
-##4. 从rhadoop入手找解决办法 — 成功
+## 4. 从rhadoop入手找解决办法 — 成功
 
 我们找到rhadoop的作者github的issue 122:
 
@@ -256,40 +252,9 @@ packageJobJar: [/tmp/RtmpM87JEc/rmr-local-env1c7588ca7ed, /tmp/RtmpM87JEc/rmr-gl
 
 ```
 
-####执行成功， 错误解决！！
+#### 执行成功， 错误解决！！
 
 本文从发现错误，定位错误，查找错误，解决错误，4个步骤解决上面的问题。
 希望给遇到问题束手无策的同学，不仅提供直接的错误帮助，更有一个思路上的认识，提高自己的动手能力！！
 
-####转载请注明出处：
-http://blog.fens.me/rhadoop-rmr2-pipemapred/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### 转载请注明出处：http://blog.fens.me/rhadoop-rmr2-pipemapred/
