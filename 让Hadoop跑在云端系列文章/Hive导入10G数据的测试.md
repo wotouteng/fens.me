@@ -359,8 +359,7 @@ Time taken: 119.161 seconds
 
 测试过程已经描述的很清楚了，我们接下来的工作就是把过程自动化。
 
-#### 转载请注明出处：
- http://blog.fens.me/hadoop-hive-10g/
+#### 转载请注明出处：http://blog.fens.me/hadoop-hive-10g/
 
 
 
