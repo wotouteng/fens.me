@@ -10,13 +10,8 @@
 其实，VPS还可以自己搭建的。只要我们有一台高性能的服务器，一个IP地址，一个路由。可以把一台高性能的服务器，很快的变成5台，10台，20台的虚拟VPS。我们就可以在自己的VPS上面的，发布各种的应用，还可以把剩余的服务器资源租给其他的互联网使用者。 本系列文章将分为以下几个部分介绍：“虚拟化技术选型”，[“动态IP解析”](http://blog.fens.me/vps-ip-dns)，[“在Ubuntu上安装KVM并搭建虚拟环境”](http://blog.fens.me/vps-kvm/)，[“给KVM虚拟机增加硬盘”](http://blog.fens.me/vps-kvm-disk)，[“Nova安装攻略”](http://blog.fens.me/vps-nova-setup)，“VPS内网的网络架构设计”，“VPS租用云服务”。
 
  
-
-[自己搭建VPS系列 之 在Ubuntu上安装KVM](http://blog.fens.me/vps-kvm/)
-
-[自己搭建VPS系列 之 动态IP解析](http://blog.fens.me/vps-ip-dns/)
-
-[自己搭建VPS系列 之 给KVM虚拟机增加硬盘](http://blog.fens.me/vps-kvm-disk/)
-
-[自己搭建VPS系列 之 Nova安装攻略](http://blog.fens.me/vps-nova-setup)
-
-[网络问题 – bitbucket同步数据](http://blog.fens.me/vps-network-error/)
++ [自己搭建VPS系列 之 在Ubuntu上安装KVM](http://blog.fens.me/vps-kvm/)
++ [自己搭建VPS系列 之 动态IP解析](http://blog.fens.me/vps-ip-dns/) 
++ [自己搭建VPS系列 之 给KVM虚拟机增加硬盘](http://blog.fens.me/vps-kvm-disk/)
++ [自己搭建VPS系列 之 Nova安装攻略](http://blog.fens.me/vps-nova-setup)
++ [网络问题 – bitbucket同步数据](http://blog.fens.me/vps-network-error/)
