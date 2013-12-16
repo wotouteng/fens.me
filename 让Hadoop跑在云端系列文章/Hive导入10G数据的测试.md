@@ -14,8 +14,7 @@ Hive导入10G数据的测试
 + blog: http://blog.fens.me
 + email: bsspirit@gmail.com
 
-#### 转载请注明出处：
- http://blog.fens.me/hadoop-hive-10g/
+#### 转载请注明出处：http://blog.fens.me/hadoop-hive-10g/
 
 ![Hive导入10G数据的测试](http://blog.fens.me/wp-content/uploads/2013/07/hadoop-hive-10g.png)
 
