@@ -285,7 +285,7 @@ GET / 200 6ms - 206b
 好了，我们已经成功的在ubuntu中，准备好了nodejs的开发环境。下面就可以享受开发的乐趣了。
 
 **进阶的内容请继续看**
-[从零开始nodejs系列文章](http://blog.fens.me/series-nodejs/)
++ [从零开始nodejs系列文章](http://blog.fens.me/series-nodejs/)
   http://blog.fens.me/series-nodejs/
 
 #### 转载请注明出处：http://blog.fens.me/nodejs-enviroment/
