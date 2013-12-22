@@ -98,8 +98,10 @@ deb http://extras.ubuntu.com/ubuntu precise main
 deb-src http://extras.ubuntu.com/ubuntu precise main
 ```
 
-#更新源
+更新源
+```{bash}
 ~ sudo apt-get update
+```
 
 ## 2. 安装KVM软件
 
