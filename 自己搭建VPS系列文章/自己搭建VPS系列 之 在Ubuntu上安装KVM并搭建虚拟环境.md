@@ -1,10 +1,6 @@
 自己搭建VPS系列 之 在Ubuntu上安装KVM并搭建虚拟环境
 ==========
 
-![自己搭建VPS系列 之 在Ubuntu上安装KVM并搭建虚拟环境](http://blog.fens.me/wp-content/uploads/2013/05/vps-kvm.png)
-
-#### 自己搭建VPS系列文章
-
 [自己搭建VPS系列文章](http://blog.fens.me/series-vps/)，介绍了如何利用自己的计算机资源，通过虚拟化技术搭建VPS。
 
 在互联网2.0时代，每个人都有自己的博客，还有很多专属于自己的互联网应用。这些应用大部分都是互联网公司提供的。对于一些有能力的开发人员(geek)来说，他们希望做一些自己的应用，可以用到最新最炫的技术，并且有自己的域名，有自己的服务器。这时就要去租一些互联网上的VPS主机。VPS主机就相当于是一台远程的计算机，可以部署自己的应用程序，然后申请一个域名，就可以正式发布在互联网上了。本站“[@晒粉丝](http://www.fens.me/)” 就使用的[Linode主机](http://www.linode.com/?r=70e684fdc20f965f06b7b6e80f6acfd25db211ec)VPS在美国达拉斯机房。
@@ -19,6 +15,8 @@
 + email: bsspirit@gmail.com
 
 #### 转载请注明出处：http://blog.fens.me/vps-kvm/
+
+![自己搭建VPS系列 之 在Ubuntu上安装KVM并搭建虚拟环境](http://blog.fens.me/wp-content/uploads/2013/05/vps-kvm.png)
 
 #### 第二篇 在Ubuntu上安装KVM并搭建虚拟环境，分为4个章节
 
