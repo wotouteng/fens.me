@@ -14,7 +14,7 @@ Nova安装攻略
 + blog: http://blog.fens.me
 + email: bsspirit@gmail.com
 
-#### 转载请注明出处：http://blog.fens.me/vps-kvm/
+#### 转载请注明出处：http://blog.fens.me/vps-nova-setup
 
 ![Nova安装攻略](http://blog.fens.me/wp-content/uploads/2013/07/openstack.png)
 
@@ -904,29 +904,5 @@ euca-deregister ami-00000002
 
 耐心很重要，坚持就是胜利。
 
-#### 转载请注明出处：http://blog.fens.me/vps-nova-setup/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### 转载请注明出处：http://blog.fens.me/vps-nova-setup
 
