@@ -16,7 +16,7 @@
 
 #### 转载请注明出处：http://blog.fens.me/vps-network-error/
 
-![alt 网络问题 – bitbucket同步数据](http://blog.fens.me/wp-content/uploads/2013/06/bitbucket-title.png)
+![网络问题 – bitbucket同步数据](http://blog.fens.me/wp-content/uploads/2013/06/bitbucket-title.png)
 
 #### 前言
 
