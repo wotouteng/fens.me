@@ -14,15 +14,15 @@
 + blog: http://blog.fens.me
 + email: bsspirit@gmail.com
 
-#### 转载请注明出处：http://blog.fens.me/vps-kvm/
+#### 转载请注明出处：http://blog.fens.me/vps-network-error/
+
+![alt 网络问题 – bitbucket同步数据](http://blog.fens.me/wp-content/uploads/2013/06/bitbucket-title.png)
 
 #### 前言
 
 话要从bitbucket.org被封说起。github众所周知，是IT界最有名的代码开放社区，2013年1月间由于12306的订票助手使用到了github上面分享的代码，github.com网站先被拖垮，后被封杀，Github被GFW屏蔽，最后IT界的所有大老们通过社会舆论的影响，才使得github逃过GFW的劫难。
 
 bitbucket.org同样也是代码开放社区，大概于2013年4月的一天悄悄被GFW封了。很多朋友的私有项目，都是托管在bitbucket.org社区的，这样一封又是一场不小的灾难。
-
-![网络问题 – bitbucket同步数据](http://blog.fens.me/wp-content/uploads/2013/06/bitbucket-title.png)
 
 #### 目录：
 
