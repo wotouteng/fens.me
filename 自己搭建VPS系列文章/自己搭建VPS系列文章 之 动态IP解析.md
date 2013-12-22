@@ -1,8 +1,6 @@
 自己搭建VPS系列文章 之 动态IP解析
 ==============
 
-#### 自己搭建VPS系列文章
-
 [自己搭建VPS系列文章](http://blog.fens.me/series-vps/)，介绍了如何利用自己的计算机资源，通过虚拟化技术搭建VPS。
 
 在互联网2.0时代，每个人都有自己的博客，还有很多专属于自己的互联网应用。这些应用大部分都是互联网公司提供的。对于一些有能力的开发人员(geek)来说，他们希望做一些自己的应用，可以用到最新最炫的技术，并且有自己的域名，有自己的服务器。这时就要去租一些互联网上的VPS主机。VPS主机就相当于是一台远程的计算机，可以部署自己的应用程序，然后申请一个域名，就可以正式发布在互联网上了。本站“[@晒粉丝](http://www.fens.me/)” 就使用的[Linode主机](http://www.linode.com/?r=70e684fdc20f965f06b7b6e80f6acfd25db211ec)VPS在美国达拉斯机房。
@@ -16,7 +14,9 @@
 + blog: http://blog.fens.me
 + email: bsspirit@gmail.com
 
-#### 转载请注明出处：http://blog.fens.me/vps-kvm/
+#### 转载请注明出处：http://blog.fens.me/vps-ip-dns/
+
+![自己搭建VPS系列文章 之 动态IP解析](http://blog.fens.me/wp-content/uploads/2013/06/vps-ip-dns.png)
 
 #### 文章目录：
 
@@ -25,13 +25,13 @@
 3. 实现原理
 4. 动手实践
 
-## 什么时候会用到动态IP解析？
+## 1 什么时候会用到动态IP解析？
 
 家用PC通过PPPoE（宽带连接）拨号上网，如果一天二天没有关机，我们会神奇的发现IP变了。通过PPPoE获得的IP并不是固定的，每隔一段时间IP会被重新分配一次。
 
 创业初期租不起外面的服务器，所以只好把服务器放在家中，面向互联网用户提供服务。但如果IP天天变，我们总不能天天盯着，发现变了人工去修改对应用的域名重新绑定新IP。这个时候，就会想到动态IP解析技术了。这个领域最有名的程序就是“花生壳”。其实这个技术实现起来并不复杂，接下来我们自己开发一套动态IP解析的程序。
 
-## 环境准备：
+## 2. 环境准备：
 
 + 1台内网服务器A (拨号上网) (xx.xx.xx.xx)，linux(cron, bash, curl)
 + 1台固定IP的外网服务器B(173.255.193.179) :  linux(bind9, PHP)
@@ -39,7 +39,7 @@
 
 ![](http://blog.fens.me/wp-content/uploads/2013/06/%E5%8A%A8%E6%80%81IP%E8%A7%A3%E6%9E%90.jpg)
 
-## 实现原理：
+## 3. 实现原理：
 
 1. 把域名绑定到服务器B： ip.wtmart.com ==> 173.255.193.179
 2. 在服务器B创建一个web应用收集请求，并写入本地文件
@@ -50,7 +50,7 @@
 
 ## 下面我们一步一步实践一下：
 
-### 1. 把域名绑定到服务器B： ip.wtmart.com ==> 173.255.193.179
+### 1). 把域名绑定到服务器B： ip.wtmart.com ==> 173.255.193.179
 
 wtmart.com的域名是从godaddy.com上面购买的，通过[dnspod](http://www.dnspod.cn/)做域名解析，难得的好服务。
 
@@ -58,7 +58,7 @@ wtmart.com的域名是从godaddy.com上面购买的，通过[dnspod](http://www.
 
 注： 这里我们只需要关注ip.wtmart.com 其他的设置不用关心。
 
-### 2. 在服务器B创建一个web应用收集请求，并写入本地文件
+### 2). 在服务器B创建一个web应用收集请求，并写入本地文件
 
 创建PHP程序
 
@@ -121,7 +121,7 @@ IP写入到本地文件,ip
 
 *配置PHP环境，我在这里就跳过了，也可以使用其他语言的程序。*
 
-### 3. 服务器A每分钟向服务器B发送请求，告诉服务器B，服务器A的IP是什么 
+### 3). 服务器A每分钟向服务器B发送请求，告诉服务器B，服务器A的IP是什么 
 
 在服务器A，设置cron定时器。
 
@@ -131,7 +131,7 @@ IP写入到本地文件,ip
 
 通过curl实现每分钟，发送一次请求。
 
-### 4.服务器B收到A的IP，发现变化写入本地文件存储，并更新本地域名服务器(bind9)，用新IP指向lin.wtmart.com
+### 4). 服务器B收到A的IP，发现变化写入本地文件存储，并更新本地域名服务器(bind9)，用新IP指向lin.wtmart.com
 
 刚才的 sendip.php的脚本已经实现了，写入本地文件存储，接下来我们改一下sendip.php实现配置本地域名服务器(bind9)
 
@@ -228,7 +228,7 @@ lin    IN    A    116.24.133.86
 sudo /etc/init.d/bind9 restart
 ```
 
-### 5. 客户端机器C，手动选择DNS服务设置173.255.193.179
+### 5). 客户端机器C，手动选择DNS服务设置173.255.193.179
 linux配置DNS
 
 ![](http://blog.fens.me/wp-content/uploads/2013/06/linux-dns.png)
@@ -237,7 +237,7 @@ win7配置DNS
 
 ![](http://blog.fens.me/wp-content/uploads/2013/06/win-dns.png)
 
-### 6. 客户端机器C，SSH远程登陆服务器A，ssh root@lin.wtmart.com
+### 6). 客户端机器C，SSH远程登陆服务器A，ssh root@lin.wtmart.com
 win7中命令行登陆
 
 ![](http://blog.fens.me/wp-content/uploads/2013/06/win-ssh.png)
@@ -249,20 +249,3 @@ win7中命令行登陆
 对于创业初期服务器放在家里的同学，希望对你们有用。
 
 #### 转载请注明出处：http://blog.fens.me/vps-ip-dns
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
