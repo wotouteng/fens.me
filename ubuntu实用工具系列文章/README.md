@@ -3,7 +3,7 @@ ubuntu实用工具系列文章
 
 ![ubuntu实用工具系列文章](http://blog.fens.me/wp-content/uploads/2013/06/os.jpg)
 
-操作系统实用工具系列文章，将介绍基于Linux ubuntu的各种工具软件的配置和使用。有些工具大家早已耳熟能详，有些工具经常用到但确依然陌生。我将记录我在使用操作系统时，安装及配置工具上面的一些方法，把使用心得记录下来也便于自己的以后查找和回忆。
+[ubuntu实用工具系列文章](http://blog.fens.me/series-ubuntu/)，将介绍基于Linux ubuntu 的各种工具软件的配置和使用。有些工具大家早已耳熟能详，有些工具经常用到但确依然陌生。我将记录我在使用操作系统时，安装及配置工具上面的一些方法，把使用心得记录下来也便于自己的以后查找和回忆。
 
 ## Linux系统服务
 + [Linux基础课](http://blog.fens.me/rhadoop-linux-basic/)
