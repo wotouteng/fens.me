@@ -16,11 +16,11 @@
 
 #### 转载请注明出处：http://blog.fens.me/vps-kvm/
 
+![自己搭建VPS系列文章](http://blog.fens.me/wp-content/uploads/2013/07/kvm-disk.png)
+
 #### 前言
 
 虚拟机作为灵活配置的服务器主机，给系统运维和管理带来了巨大的便利。CPU，内存，硬盘，网络等的可配置，给了虚拟机非常强大的优势，是物理机不能比拟的。今天讲一下如何给KVM虚拟机增加新硬盘。
-
-![自己搭建VPS系列文章](http://blog.fens.me/wp-content/uploads/2013/07/kvm-disk.png)
 
 #### 目录
 
