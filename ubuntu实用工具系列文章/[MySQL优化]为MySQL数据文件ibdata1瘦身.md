@@ -98,15 +98,16 @@ mysql> show tables;
 ## 2. 发现问题
 
 ibdata1单个文件占用20G大小。
-1. MySQL默认设置，没有按表空间分离数据，所有的表的数据都被放到ibdata1文件中。
-2. 业务操作，每天会产生一张表cb_hft，晚上的时候对表进行重命名。
+
+1). MySQL默认设置，没有按表空间分离数据，所有的表的数据都被放到ibdata1文件中。
+2). 业务操作，每天会产生一张表cb_hft，晚上的时候对表进行重命名。
 
 ```{bash}
 RENAME TABLE cb_hft TO cb_hft_20130801;
 create table cb_hft like cb_hft_20130801;
 ```
 
-3. 每周会把数据导出，同时drop表。但drop后，ibdata1不会减少，随着数据的积累ibdata1越来越大，根空间已经不够用了。
+3). 每周会把数据导出，同时drop表。但drop后，ibdata1不会减少，随着数据的积累ibdata1越来越大，根空间已经不够用了。
 
 ## 3. 解决问题
 
@@ -307,14 +308,4 @@ drop后，数据就一起被删除了。
 经过对MySQL的调优，ibdata1已经被瘦身！数据库又可以继续正常的稳定的工作了。
 
 #### 转载请注明出处：http://blog.fens.me/mysql-ibdata1/
-
-
-
-
-
-
-
-
-
-
 
