@@ -1,9 +1,7 @@
 upstart封装mongodb应用为系统服务
 ===============
 
-#### ubuntu实用工具系列文章
-
-[操作系统实用工具系列文章](http://blog.fens.me/series-ubuntu/)，将介绍基于Linux ubuntu的各种工具软件的配置和使用。有些工具大家早已耳熟能详，有些工具经常用到但确依然陌生。我将记录我在使用操作系统时，安装及配置工具上面的一些方法，把使用心得记录下来也便于自己的以后查找和回忆。
+[ubuntu实用工具系列文章](http://blog.fens.me/series-ubuntu/)，将介绍基于Linux ubuntu的各种工具软件的配置和使用。有些工具大家早已耳熟能详，有些工具经常用到但确依然陌生。我将记录我在使用操作系统时，安装及配置工具上面的一些方法，把使用心得记录下来也便于自己的以后查找和回忆。
 
 #### 关于作者
 + 张丹(Conan), 程序员Java,R,PHP,Javascript
@@ -11,7 +9,7 @@ upstart封装mongodb应用为系统服务
 + blog: http://blog.fens.me
 + email: bsspirit@gmail.com
 
-#### 转载请注明出处：http://blog.fens.me/linux-fdisk/
+#### 转载请注明出处：http://blog.fens.me/linux-upstart-mongodb/
 
 ![upstart封装mongodb应用为系统服务](http://blog.fens.me/wp-content/uploads/2013/06/upstart-mongodb.png)
 
@@ -229,19 +227,4 @@ root      2332  0.6  1.5 705112 15960 ?        Ssl  08:10   0:00 /usr/bin/mongod
 系统运维也将变得如此简单。
 
 #### 转载请注明出处：http://blog.fens.me/linux-upstart-mongodb/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
