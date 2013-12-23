@@ -1,9 +1,7 @@
 upstart封装nodejs应用为系统服务
 ==================
 
-#### 从零开始nodejs系列文章
-
-从零开始nodejs系列文章，将介绍如何利Javascript做为服务端脚本，通过Nodejs框架web开发。Nodejs框架是基于V8的引擎，是目前速度最快的Javascript引擎。chrome浏览器就基于V8，同时打开20-30个网页都很流畅。Nodejs标准的web开发框架Express，可以帮助我们迅速建立web站点，比起PHP的开发效率更高，而且学习曲线更低。非常适合小型网站，个性化网站，我们自己的Geek网站！！
+[从零开始nodejs系列文章](http://blog.fens.me/series-nodejs/)，将介绍如何利Javascript做为服务端脚本，通过Nodejs框架web开发。Nodejs框架是基于V8的引擎，是目前速度最快的Javascript引擎。chrome浏览器就基于V8，同时打开20-30个网页都很流畅。Nodejs标准的web开发框架Express，可以帮助我们迅速建立web站点，比起PHP的开发效率更高，而且学习曲线更低。非常适合小型网站，个性化网站，我们自己的Geek网站！！
 
 #### 关于作者
 
@@ -16,9 +14,11 @@ upstart封装nodejs应用为系统服务
 
 ![upstart封装nodejs应用为系统服务](http://blog.fens.me/wp-content/uploads/2013/06/upstart-nodejs.png)
 
+#### 前言
+
 本文将介绍封装nodejs应用为系统服务，应用会像一个守护程序一样，被操作系统所管理。
 
-#### 文章目录：
+#### 目录：
 
 1. nodejs应用介绍
 2. upstart任务脚本
@@ -139,30 +139,3 @@ nodejs-moive start/running, process 21280
 这样很方便地我们可以通过upstart，以系统服务的方式管理nodejs应用。运维起来会很容易！！
 
 #### 转载请注明出处：http://blog.fens.me/linux-upstart-nodejs/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
