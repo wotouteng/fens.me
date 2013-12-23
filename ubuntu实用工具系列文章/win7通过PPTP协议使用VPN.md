@@ -9,7 +9,7 @@ win7通过PPTP协议使用VPN
 + blog: http://blog.fens.me
 + email: bsspirit@gmail.com
 
-
+![Ubuntu通过PPTP协议使用VPN](http://blog.fens.me/wp-content/uploads/2013/07/vpn-pptp-win7.png)
 
 #### 前言
 
