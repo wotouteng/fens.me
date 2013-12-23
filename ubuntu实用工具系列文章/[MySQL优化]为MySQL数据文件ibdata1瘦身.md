@@ -1,12 +1,9 @@
 [MySQL优化]为MySQL数据文件ibdata1瘦身
 ================
 
-#### 前言
+[ubuntu实用工具系列文章](http://blog.fens.me/series-ubuntu/)，将介绍基于Linux ubuntu的各种工具软件的配置和使用。有些工具大家早已耳熟能详，有些工具经常用到但确依然陌生。我将记录我在使用操作系统时，安装及配置工具上面的一些方法，把使用心得记录下来也便于自己的以后查找和回忆。
 
-MySQL在运行一段时间后，ibdata1的文件会增长大小，就算删除了表的数据，ibdata1的体积也不会减小。由于硬盘空间有限，这样一直膨胀下去磁盘空间接近崩溃。今天在导出数据的时候就发现了，磁盘竟然满了，明明预留了1个月的用量，1周就占满了,下面就要给ibdata1做个瘦身。
-
-#### 关于作者：
-
+#### 关于作者
 + 张丹(Conan), 程序员Java,R,PHP,Javascript
 + weibo：@Conan_Z
 + blog: http://blog.fens.me
@@ -15,6 +12,10 @@ MySQL在运行一段时间后，ibdata1的文件会增长大小，就算删除�
 #### 转载请注明出处：http://blog.fens.me/mysql-ibdata1/
 
 ![为MySQL数据文件ibdata1瘦身](http://blog.fens.me/wp-content/uploads/2013/08/mysql-ibdata1.png)
+
+#### 前言
+
+MySQL在运行一段时间后，ibdata1的文件会增长大小，就算删除了表的数据，ibdata1的体积也不会减小。由于硬盘空间有限，这样一直膨胀下去磁盘空间接近崩溃。今天在导出数据的时候就发现了，磁盘竟然满了，明明预留了1个月的用量，1周就占满了,下面就要给ibdata1做个瘦身。
 
 #### 目录
 
