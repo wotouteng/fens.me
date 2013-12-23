@@ -1,9 +1,7 @@
 Ubuntu通过PPTP协议使用VPN
 ==============
 
-#### ubuntu实用工具系列文章
-
-[操作系统实用工具系列文章](http://blog.fens.me/series-ubuntu/)，将介绍基于Linux ubuntu的各种工具软件的配置和使用。有些工具大家早已耳熟能详，有些工具经常用到但确依然陌生。我将记录我在使用操作系统时，安装及配置工具上面的一些方法，把使用心得记录下来也便于自己的以后查找和回忆。
+[ubuntu实用工具系列文章](http://blog.fens.me/series-ubuntu/)，将介绍基于Linux ubuntu的各种工具软件的配置和使用。有些工具大家早已耳熟能详，有些工具经常用到但确依然陌生。我将记录我在使用操作系统时，安装及配置工具上面的一些方法，把使用心得记录下来也便于自己的以后查找和回忆。
 
 #### 关于作者
 + 张丹(Conan), 程序员Java,R,PHP,Javascript
@@ -11,7 +9,7 @@ Ubuntu通过PPTP协议使用VPN
 + blog: http://blog.fens.me
 + email: bsspirit@gmail.com
 
-#### 转载请注明出处：http://blog.fens.me/linux-fdisk/
+#### 转载请注明出处：http://blog.fens.me/vpn-pptp-client-ubuntu/
 
 #### 前言
 
@@ -35,9 +33,10 @@ win7通过PPTP协议使用VPN：请参考 [win7通过PPTP协议使用VPN](http:/
 VPN账号包括3个部分：IP，用户名，密码
 
 **比如：(只为演示说明，此账号不可用)**
-  ip: 123.123.123.123
-  用户名：xx1
-  密码: xx2
+
++ ip: 123.123.123.123
++ 用户名：xx1
++ 密码: xx2
 
 ## 2. ubuntu客户端界面配置
 
@@ -46,10 +45,12 @@ VPN账号包括3个部分：IP，用户名，密码
 1. 点击右上角网络 –》VPN Connections –》Configure VPN
 2. 新建一个VPN连接–》Add
 3. 输入VPN账号：–》Advanced
-  Connection name: 连接号
-  Gateway: VPN服务器IP
-  Username: 用户名
-  Password: 密码
+
+  + Connection name: 连接号
+  + Gateway: VPN服务器IP
+  + Username: 用户名
+  + Password: 密码
+
 4. 高级选项 –》 Use Point-to-Point encryption(MPPE)
 5. 选择VPN连接 –》 连接成功提示。
 
