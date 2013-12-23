@@ -11,6 +11,8 @@ Ubuntu通过PPTP协议使用VPN
 
 #### 转载请注明出处：http://blog.fens.me/vpn-pptp-client-ubuntu/
 
+![Ubuntu通过PPTP协议使用VPN](http://blog.fens.me/wp-content/uploads/2013/07/vpn-pptp-client.png)
+
 #### 前言
 
 GFW给大家的生活事带来了各种不便，只有靠我们自己才能改变这种不便。像facebook, twitter, youtube, google+, bitbucket, slideside…. 这些世界知名的网站，我们都没有办法直接访问，有时候你很难联想到为什么要屏蔽这些网站。特别是纯技术社区！
