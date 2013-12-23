@@ -1,9 +1,7 @@
 时间同步服务器NTP
 ==============
 
-#### ubuntu实用工具系列文章
-
-[操作系统实用工具系列文章](http://blog.fens.me/series-ubuntu/)，将介绍基于Linux ubuntu的各种工具软件的配置和使用。有些工具大家早已耳熟能详，有些工具经常用到但确依然陌生。我将记录我在使用操作系统时，安装及配置工具上面的一些方法，把使用心得记录下来也便于自己的以后查找和回忆。
+[ubuntu实用工具系列文章](http://blog.fens.me/series-ubuntu/)，将介绍基于Linux ubuntu的各种工具软件的配置和使用。有些工具大家早已耳熟能详，有些工具经常用到但确依然陌生。我将记录我在使用操作系统时，安装及配置工具上面的一些方法，把使用心得记录下来也便于自己的以后查找和回忆。
 
 #### 关于作者
 + 张丹(Conan), 程序员Java,R,PHP,Javascript
@@ -11,19 +9,23 @@
 + blog: http://blog.fens.me
 + email: bsspirit@gmail.com
 
-#### 转载请注明出处：http://blog.fens.me/linux-fdisk/
+#### 转载请注明出处：http://blog.fens.me/linux-ntp/
+
+![时间同步服务器NTP](http://blog.fens.me/wp-content/uploads/2013/07/ntp-title.png)
 
 #### 前言
 
 服务器的时间同步操作，是每台服务器应该配置的核心功能之一。不管是单机的定时任务，还是大规模的集群服务，都需要有一个统计的时间基准，才能保证程序的正常运行。
-
-![时间同步服务器NTP](http://blog.fens.me/wp-content/uploads/2013/07/ntp-title.png)
 
 #### 目录
 
 1. 配置同步服务器ntp
 2. 客户机进行时间同步
 3. 系统时间 和 bios硬件时间hwclock
+
+## 1. 配置同步服务器ntp
+
+host： 192.168.1.79
 
 #### 系统环境
 
@@ -36,10 +38,6 @@ Linux delta 3.5.0-17-generic #28-Ubuntu SMP Tue Oct 9 19:31:23 UTC 2012 x86_64 x
 ~ cat /etc/issue
 Ubuntu 12.10 \n \l
 ```
-
-## 1. 配置同步服务器ntp
-
-host： 192.168.1.79
 
 ### 安装并启动ntp服务器
 
@@ -157,21 +155,5 @@ Mon 01 Jul 2013 08:27:25 PM CST  -0.720095 seconds
 好了，这回把时间就设置好了！！
 
 #### 转载请注明出处：http://blog.fens.me/linux-ntp/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
