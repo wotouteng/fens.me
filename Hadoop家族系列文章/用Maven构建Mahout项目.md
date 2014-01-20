@@ -422,9 +422,8 @@ R语言代码：
 R语言和Mahout生成的点，并不是重合的，原因有几点：
 
 * 1. 距离算法不一样：
-Mahout中，我们用的 “欧氏距离(EuclideanDistanceMeasure)”
-R语言中，默认是”Hartigan and Wong”
-
+*   Mahout中，我们用的 “欧氏距离(EuclideanDistanceMeasure)”  
+*   R语言中，默认是”Hartigan and Wong”
 * 2. 初始化的中心是不一样的。
 * 3. 最大迭代次数是不一样的。
 * 4. 点合并时，判断的”阈值(threshold)”是不一样的。
