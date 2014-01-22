@@ -1,22 +1,19 @@
 PageRank算法并行实现
 ==========
 
+[算法为王系列文章](http://blog.fens.me/series-algorithm/)，涵盖了计算机算法，数据挖掘(机器学习)算法，统计算法，金融算法等的多种跨学科算法组合。在大数据时代的背景下，算法已经成为了金字塔顶的明星。一个好的算法可以创造一个伟大帝国，就像Google。
 
-[无所不能的Java系列文章](http://blog.fens.me/series-java/)，涵盖了Java的思想，应用开发，设计模式，程序架构等，通过我的经验去诠释Java的强大。
+算法为王的时代正式到来….
 
-说起Java，真的有点不知道从何说起。Java是一门全领域发展的语言，从基础的来讲有4大块，Java语法，JDK，JVM，第三方类库。官方又以面向不同应用的角度，又把JDK分为JavaME，JavaSE，JavaEE三个部分。Java可以做客户端界面，可以做中间件，可以做手机系统，可以做应用，可以做工具，可以做游戏，可以做算法…，Java几乎无所不能。
-
-在Java的世界里，Java就是一切。
-
-#### 关于作者
+#### 关于作者：
 
 * 张丹(Conan), 程序员Java,R,PHP,Javascript
 * weibo：@Conan_Z
 * blog: http://blog.fens.me
 * email: bsspirit@gmail.com
 
-#### 转载请注明出处：http://blog.fens.me/algorithm-pagerank-mapreduce/
-
+#### 转载请注明出处：
+http://blog.fens.me/algorithm-pagerank-mapreduce/
 ![PageRank算法并行实现](http://blog.fens.me/wp-content/uploads/2014/01/pagerank-mapreduce.png)
 
 #### 前言
