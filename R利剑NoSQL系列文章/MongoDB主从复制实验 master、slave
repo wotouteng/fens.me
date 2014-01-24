@@ -1,0 +1,104 @@
+MongoDB主从复制实验 master、slave
+=======
+
+#### [MongoDB部署实验系列文章](http://blog.fens.me/series-mongodb/)
+
+MongoDB做为NoSQL数据库，最近几年持续升温，越来越多的企业都开始尝试用MongoDB代替原有Database做一些事情。MongoDB也在集群，分片，复制上也有相当不错的的表现。我通过将做各种MongoDB的部署实验进行介绍。
+
+#### 关于作者：
+
+* 张丹(Conan), 程序员Java,R,PHP,Javascript
+* weibo：@Conan_Z
+* blog: http://blog.fens.me
+* email: bsspirit@gmail.com
+
+#### 转载请注明出处：http://blog.fens.me/mongodb-master-slave/
+
+![MongoDB主从复制实验 master/slave](http://blog.fens.me/wp-content/uploads/2013/05/ms1.png)
+
+#### 第一篇 MongoDB主从复制实验 master/slave，分为5个部分
+
+1. 初始化文件目录
+2. 启动master
+3. 启动slave
+4. 向master插入数据测试
+5. 在slave中查询数据
+
+#### 系统环境介绍：
+
+Ubuntu 12.04. LTS 64bit Server
+
+#### 简单安装MongoDB
+
+在source.list文件中，增加10gen的源
+
+```{bash}
+~ vi /etc/apt/source.list
+deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen
+~ sudo apt-get update
+~ sudo apt-get install mongodb-10gen
+```
+
+## 1. 初始化文件目录(MongoDB存储)
+
+```{bash}
+~ pwd
+/home/conan/dbs
+
+~ mkdir master slave
+~ ls -l
+drwxrwxr-x 2 conan conan 4096 May 31 13:54 master/
+drwxrwxr-x 2 conan conan 4096 May 31 14:04 slave/
+```
+
+## 2. 启动master
+
+```{bash}
+~ mongod --dbpath /home/conan/dbs/master --port 10000 --master --rest --nojournal --fork --logpath /home/conan/dbs/master.log
+about to fork child process, waiting until server is ready for connections.
+forked process: 4827
+all output going to: /home/conan/dbs/master.log
+child process started successfully, parent exiting
+```
+
+![](http://blog.fens.me/wp-content/uploads/2013/05/m2.png)
+
+## 3. 启动slave
+
+```{bash}
+~ mongod --dbpath /home/conan/dbs/slave --port 10001 --slave --source localhost:10000 --rest --nojournal --fork --logpath /home/conan/dbs/slave.log
+about to fork child process, waiting until server is ready for connections.
+forked process: 5062
+all output going to: /home/conan/dbs/slave.log
+child process started successfully, parent exiting
+```
+
+![](http://blog.fens.me/wp-content/uploads/2013/05/m3.png)
+
+## 4. 向master插入数据测试
+
+```{bash}
+~ mongo localhost:10000
+MongoDB shell version: 2.4.3
+connecting to: localhost:10000/test
+> db.master.insert({uid:1000})
+> db.master.find()
+{ "_id" : ObjectId("51a83e979d113ea810e6ddbd"), "uid" : 1000 }
+```
+
+## 5. 在slave中查询数据
+
+```{bash}
+~ mongo localhost:10001
+MongoDB shell version: 2.4.3
+connecting to: localhost:10001/test
+> db.master.find()
+{ "_id" : ObjectId("51a83e979d113ea810e6ddbd"), "uid" : 1000 }
+```
+
+在slave中，我们找了到数据，是从master同步过来的。实验完成！
+
+主从实验是MongoDB最简单的部署实验了。
+
+#### 转载请注明：http://blog.fens.me/mongodb-master-slave/
+
