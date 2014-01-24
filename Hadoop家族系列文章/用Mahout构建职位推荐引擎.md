@@ -16,7 +16,7 @@
 
 #### 转载请注明出处：http://blog.fens.me/hadoop-mahout-recommend-job/
 
-![](http://blog.fens.me/wp-content/uploads/2013/10/mahout-recommender-job.png)
+![用Mahout构建职位推荐引擎](http://blog.fens.me/wp-content/uploads/2013/10/mahout-recommender-job.png)
 
 #### 前言
 
