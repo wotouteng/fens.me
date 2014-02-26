@@ -66,15 +66,15 @@ Markdown的官方网站：http://daringfireball.net/projects/markdown/
   ## INSTALL
   
   #### 公共库安装
-  ```\{bash\}
+  \`\`\`\{bash\}
   npm install
   bower install
-  ```
+  \`\`\`
   
   #### 私有库安装
-  ```\{bash\}
-  
-  ```
+  \`\`\`\{bash\}
+
+  \`\`\`
   
   ## API
   
