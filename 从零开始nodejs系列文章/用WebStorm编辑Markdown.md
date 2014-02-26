@@ -57,7 +57,7 @@ Markdown的官方网站：http://daringfireball.net/projects/markdown/
 
 重起Webstorm软件，新建一个test.md文件。
 
-\`\`\`\{bash\}
+<pre><code>
   APE: 测试Markdown语法
   ========================
   
@@ -66,10 +66,10 @@ Markdown的官方网站：http://daringfireball.net/projects/markdown/
   ## INSTALL
   
   #### 公共库安装
-  \`\`\`\{bash\}
+  ```{bash}
   npm install
   bower install
-  \`\`\`
+  ```
   
   #### 私有库安装
   ```{bash}
@@ -83,7 +83,7 @@ Markdown的官方网站：http://daringfireball.net/projects/markdown/
   ## License
   
   private
-\`\`\`
+</code></pre>
 
 我们看到，编辑器没有针对 markdown的文件进行适配，显示效果与文本文件无异。
 
